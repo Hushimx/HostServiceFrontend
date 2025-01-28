@@ -45,3 +45,11 @@ export function formatBytes(
     sizeType === 'accurate' ? accurateSizes[i] ?? 'Bytest' : sizes[i] ?? 'Bytes'
   }`;
 }
+
+
+export function getImageUrl(imagePath: string) {
+  if(imagePath){
+    return `${process.env.NEXT_PUBLIC_IMAGES_URL}${imagePath}`;
+  }
+  return "";
+}

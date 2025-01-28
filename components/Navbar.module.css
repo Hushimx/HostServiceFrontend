@@ -1,0 +1,54 @@
+.navbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+  background-color: #4b0a53;
+}
+
+.navbarBrand {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #4b0a53;
+  padding: 5px 15px;
+  border: 2px solid #f1c40f;
+  border-radius: 5px;
+}
+
+.logoNav {
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+.logoNav .service {
+  background-color: #4b0a53;
+  color: #fff;
+  padding: 3px 18px;
+}
+
+.logoNav .host {
+  background-color: #f1c40f;
+  color: #4b0a53;
+  padding: 0px 10px;
+}
+
+.navbarNav {
+  display: flex;
+  list-style: none;
+  padding: 0;
+}
+
+.navItem {
+  margin: 0 10px;
+}
+
+.navLink {
+  color: #f1c40f;
+  font-weight: bold;
+  font-size: 1.2em;
+  text-decoration: none;
+}
+
+

@@ -26,6 +26,7 @@ interface CitySelectProps {
 }
 
 export const CountrySelect: React.FC<CountrySelectProps> = ({ onChange,initialValue }) => {
+  console.log(initialValue)
   const [countries, setCountries] = useState<Country[]>([]);
   const [selectedCountry, setSelectedCountry] = useState<number | null>(initialValue || null);
   const [isLoading, setIsLoading] = useState(false);
@@ -36,12 +37,17 @@ export const CountrySelect: React.FC<CountrySelectProps> = ({ onChange,initialVa
       try {
         const response = await fetch('http://127.0.0.1:3333/admin/countries', {
           headers: {
-            authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImVtYWlsIjoicml5YWRoLWFkbWluQGV4YW1wbGUuY29tIiwicm9sZSI6IlNVUEVSX0FETUlOIiwiaWF0IjoxNzM0MzU4MzE0LCJleHAiOjE3MzQ0NDExMTR9.f8Lm5FsaLmxJeDbd2U1nzI9RQIWVToMSwJIYv_KiaR0`,
+            authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImVtYWlsIjoicml5YWRoLWFkbWluQGV4YW1wbGUuY29tIiwicm9sZSI6IlNVUEVSX0FETUlOIiwiaWF0IjoxNzM1MTQyODMwLCJleHAiOjE3MzUyMjU2MzB9.fOcBmSJMk5FGrnXeSM1eeLUoohhAOHstNqHvUm0ZkRk`,
           },
         });
         if (!response.ok) throw new Error('Failed to fetch countries');
         const data: Country[] = await response.json();
+
         setCountries(data);
+                if(data.find((c) => c.id === initialValue)){
+          setSelectedCountry(initialValue || null);
+    
+        }
       } catch (error) {
         console.error(error);
       } finally {
@@ -50,6 +56,7 @@ export const CountrySelect: React.FC<CountrySelectProps> = ({ onChange,initialVa
     };
 
     fetchCountries();
+
   }, []);
 
   const handleSelect = (value: string) => {
@@ -57,7 +64,7 @@ export const CountrySelect: React.FC<CountrySelectProps> = ({ onChange,initialVa
     setSelectedCountry(countryId);
     onChange(countryId);
   };
-
+  console.log(selectedCountry)
   return (
     <Select onValueChange={handleSelect} value={selectedCountry?.toString() || ''}>
       <SelectTrigger>
@@ -75,16 +82,15 @@ export const CountrySelect: React.FC<CountrySelectProps> = ({ onChange,initialVa
   );
 };
 
-export const CitySelect: React.FC<CitySelectProps> = ({ countryId, onChange,initialValue }) => {
-  console.log(initialValue)
+export const CitySelect: React.FC<CitySelectProps> = ({ countryId, onChange, initialValue }) => {
   const [cities, setCities] = useState<City[]>([]);
-  const [selectedCity, setSelectedCity] = useState<number | null>( null);
+  const [selectedCity, setSelectedCity] = useState<number | null>(null);
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     if (!countryId) {
       setCities([]); // Reset cities if no country is selected
-      setSelectedCity(null);
+      setSelectedCity(null); // Reset selected city
       return;
     }
 
@@ -93,14 +99,20 @@ export const CitySelect: React.FC<CitySelectProps> = ({ countryId, onChange,init
       try {
         const response = await fetch(`http://127.0.0.1:3333/admin/countries/${countryId}/cities`, {
           headers: {
-                        authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImVtYWlsIjoicml5YWRoLWFkbWluQGV4YW1wbGUuY29tIiwicm9sZSI6IlNVUEVSX0FETUlOIiwiaWF0IjoxNzM0MzU4MzE0LCJleHAiOjE3MzQ0NDExMTR9.f8Lm5FsaLmxJeDbd2U1nzI9RQIWVToMSwJIYv_KiaR0`,
-
-          }
+            authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImVtYWlsIjoicml5YWRoLWFkbWluQGV4YW1wbGUuY29tIiwicm9sZSI6IlNVUEVSX0FETUlOIiwiaWF0IjoxNzM1MTQyODMwLCJleHAiOjE3MzUyMjU2MzB9.fOcBmSJMk5FGrnXeSM1eeLUoohhAOHstNqHvUm0ZkRk`,
+          },
         });
         if (!response.ok) throw new Error('Failed to fetch cities');
         const data: City[] = await response.json();
         setCities(data);
 
+        // If initialValue exists and matches a city ID in the data, set it as selected
+        if (initialValue && data.some((city) => city.id === initialValue)) {
+          setSelectedCity(initialValue);
+          onChange(initialValue); // Notify parent component of the selection
+        } else {
+          setSelectedCity(null); // Reset selection if initialValue doesn't match
+        }
       } catch (error) {
         console.error(error);
       } finally {
@@ -111,8 +123,6 @@ export const CitySelect: React.FC<CitySelectProps> = ({ countryId, onChange,init
     fetchCities();
   }, [countryId]);
 
-    
-
   const handleSelect = (value: string) => {
     const cityId = value ? Number(value) : null; // Null for no selection
     setSelectedCity(cityId);
@@ -120,7 +130,11 @@ export const CitySelect: React.FC<CitySelectProps> = ({ countryId, onChange,init
   };
 
   return (
-    <Select onValueChange={handleSelect} value={selectedCity?.toString() || ''} disabled={!countryId || isLoading}>
+    <Select
+      onValueChange={handleSelect}
+      value={selectedCity?.toString() || ''}
+      disabled={!countryId || isLoading}
+    >
       <SelectTrigger>
         {isLoading
           ? 'Loading...'

@@ -27,52 +27,61 @@ import {
   SidebarMenuSub,
   SidebarMenuSubButton,
   SidebarMenuSubItem,
-  SidebarRail
+  SidebarRail,
+  useSidebar
 } from '@/components/ui/sidebar';
-import { navItems } from '@/constants/data';
 import {
   BadgeCheck,
   Bell,
   ChevronRight,
+  ChevronsLeft,
   ChevronsUpDown,
   CreditCard,
   GalleryVerticalEnd,
   LogOut
 } from 'lucide-react';
-import { useSession } from 'next-auth/react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import * as React from 'react';
 import { Icons } from '../icons';
+import Logo from '../logo';
+import { useDashboardAuth } from '@/contexts/AdminAuthContext';
+import { hasPermission } from '@/lib/rbac';
+import { useLanguage } from '@/contexts/LanguageContext';
 
-export const company = {
-  name: 'Acme Inc',
-  logo: GalleryVerticalEnd,
-  plan: 'Enterprise'
-};
 
-export default function AppSidebar() {
-  const { data: session } = useSession();
+
+export default function AppSidebar({user,navItems,role,logout}) {
+  
   const pathname = usePathname();
+  const { language,t } = useLanguage();
+  const { toggleSidebar,state } = useSidebar();
 
+  const [sidebarPostion, setSidebarPostion] = React.useState<'left' | 'right'>('right');
+  React.useEffect(() => {
+  
+    setSidebarPostion(language === 'ar' ? 'right' : 'left');
+  } , [language]);
   return (
-    <Sidebar collapsible="icon">
+    <Sidebar collapsible="icon" side={sidebarPostion} onMouseEnter={()=>{
+      if(state == "collapsed") toggleSidebar()
+    }}
+
+ 
+    
+    >
       <SidebarHeader>
-        <div className="flex gap-2 py-2 text-sidebar-accent-foreground ">
-          <div className="flex aspect-square size-8 items-center justify-center rounded-lg bg-sidebar-primary text-sidebar-primary-foreground">
-            <company.logo className="size-4" />
-          </div>
-          <div className="grid flex-1 text-left text-sm leading-tight">
-            <span className="truncate font-semibold">{company.name}</span>
-            <span className="truncate text-xs">{company.plan}</span>
-          </div>
+
+       <div className="flex justify-center">
+       <Logo />
         </div>
       </SidebarHeader>
       <SidebarContent className="overflow-x-hidden">
         <SidebarGroup>
-          <SidebarGroupLabel>Overview</SidebarGroupLabel>
+          <SidebarGroupLabel>{t("overview.table.overview")}</SidebarGroupLabel>
           <SidebarMenu>
             {navItems.map((item) => {
+              if(item.permission &&!hasPermission(role, item.permission)) return
               const Icon = item.icon ? Icons[item.icon] : Icons.logo;
               return item?.items && item?.items?.length > 0 ? (
                 <Collapsible
@@ -88,8 +97,12 @@ export default function AppSidebar() {
                         isActive={pathname === item.url}
                       >
                         {item.icon && <Icon />}
-                        <span>{item.title}</span>
+                        <span className='text-lg'>{t(`nav.${item.title}`) || item.title}</span>
+                        {language !== 'ar' ?
                         <ChevronRight className="ml-auto transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90" />
+                        :
+                        <ChevronRight className="ml-auto transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90" />
+                        }
                       </SidebarMenuButton>
                     </CollapsibleTrigger>
                     <CollapsibleContent>
@@ -101,7 +114,7 @@ export default function AppSidebar() {
                               isActive={pathname === subItem.url}
                             >
                               <Link href={subItem.url}>
-                                <span>{subItem.title}</span>
+                                <span>{t(`nav.${subItem.title}`) || subItem.title}</span>
                               </Link>
                             </SidebarMenuSubButton>
                           </SidebarMenuSubItem>
@@ -119,7 +132,7 @@ export default function AppSidebar() {
                   >
                     <Link href={item.url}>
                       <Icon />
-                      <span>{item.title}</span>
+                      <span className=' text-lg'>{t(`nav.${item.title}`) || item.title}</span>
                     </Link>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
@@ -139,19 +152,20 @@ export default function AppSidebar() {
                 >
                   <Avatar className="h-8 w-8 rounded-lg">
                     <AvatarImage
-                      src={session?.user?.image || ''}
-                      alt={session?.user?.name || ''}
+                      src={ ''}
+                      alt={''}
                     />
                     <AvatarFallback className="rounded-lg">
-                      {session?.user?.name?.slice(0, 2)?.toUpperCase() || 'CN'}
+                    {user.name[0]}
+
                     </AvatarFallback>
                   </Avatar>
                   <div className="grid flex-1 text-left text-sm leading-tight">
                     <span className="truncate font-semibold">
-                      {session?.user?.name || ''}
+                    {user.name}
                     </span>
                     <span className="truncate text-xs">
-                      {session?.user?.email || ''}
+                    {user.email}
                     </span>
                   </div>
                   <ChevronsUpDown className="ml-auto size-4" />
@@ -167,21 +181,21 @@ export default function AppSidebar() {
                   <div className="flex items-center gap-2 px-1 py-1.5 text-left text-sm">
                     <Avatar className="h-8 w-8 rounded-lg">
                       <AvatarImage
-                        src={session?.user?.image || ''}
-                        alt={session?.user?.name || ''}
+                        src={''}
+                        alt={ ''}
                       />
                       <AvatarFallback className="rounded-lg">
-                        {session?.user?.name?.slice(0, 2)?.toUpperCase() ||
-                          'CN'}
+                        {user.name[0]}
                       </AvatarFallback>
                     </Avatar>
                     <div className="grid flex-1 text-left text-sm leading-tight">
                       <span className="truncate font-semibold">
-                        {session?.user?.name || ''}
+                        {user.name}
                       </span>
                       <span className="truncate text-xs">
                         {' '}
-                        {session?.user?.email || ''}
+                        {user.email}
+
                       </span>
                     </div>
                   </div>
@@ -189,23 +203,17 @@ export default function AppSidebar() {
                 <DropdownMenuSeparator />
 
                 <DropdownMenuGroup>
-                  <DropdownMenuItem>
+                  {/* <DropdownMenuItem>
                     <BadgeCheck />
                     Account
-                  </DropdownMenuItem>
-                  <DropdownMenuItem>
-                    <CreditCard />
-                    Billing
-                  </DropdownMenuItem>
-                  <DropdownMenuItem>
-                    <Bell />
-                    Notifications
-                  </DropdownMenuItem>
+                  </DropdownMenuItem> */}
+
+
                 </DropdownMenuGroup>
                 <DropdownMenuSeparator />
-                <DropdownMenuItem>
+                <DropdownMenuItem onClick={logout}>
                   <LogOut />
-                  Log out
+                  {t("logout")}
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>

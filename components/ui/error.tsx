@@ -10,7 +10,7 @@ const Error: React.FC<ErrorProps> = ({
   onRetry,
 }) => {
   return (
-    <div className="flex flex-col items-center justify-center h-screen bg-gray-50">
+    <div className="flex flex-col items-center justify-center h-screen bg-primary-foreground">
       <div className="flex items-center justify-center w-20 h-20 rounded-full bg-red-100 text-red-600 shadow-md">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -25,7 +25,7 @@ const Error: React.FC<ErrorProps> = ({
           />
         </svg>
       </div>
-      <p className="mt-6 text-xl font-semibold text-gray-800">{message}</p>
+      <p className="mt-6 text-xl font-semibold text-white">{message}</p>
       {onRetry && (
         <button
           onClick={onRetry}

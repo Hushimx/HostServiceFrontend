@@ -1,3 +1,4 @@
+import { Permission } from '@/lib/rbac';
 import { NavItem } from '@/types';
 
 export type User = {
@@ -8,6 +9,15 @@ export type User = {
   verified: boolean;
   status: string;
 };
+interface CountriesCodes {
+  code: string;
+  dial_code: string;
+  flag: string;
+  startDigit: number;
+  minLength?: number;
+  maxLength?: number;
+
+}
 export const users: User[] = [
   {
     id: 1,
@@ -121,58 +131,176 @@ export type Product = {
   updated_at: string;
 };
 
-export const navItems: NavItem[] = [
+export const AdminNavItems: NavItem[] = [
   {
     title: 'Dashboard',
-    url: '/dashboard/overview',
+    url: '/admin/overview',
     icon: 'dashboard',
     isActive: false,
     shortcut: ['d', 'd'],
-    items: [] // Empty array as there are no child items for Dashboard
+    items: [], // No child items
   },
   {
-    title: 'Employee',
-    url: '/dashboard/employee',
+    title: 'Admins',
+    url: '/admin/admin',
     icon: 'user',
-    shortcut: ['e', 'e'],
     isActive: false,
-    items: [] // No child items
+    shortcut: ['a', 'a'],
+    items: [],
+    permission: Permission.VIEW_ADMINS, // Optional for role-based visibility
   },
   {
-    title: 'Product',
-    url: '/dashboard/product',
-    icon: 'product',
-    shortcut: ['p', 'p'],
+    title: 'Hotels',
+    url: '/admin/hotel',
+    icon: 'hotel',
     isActive: false,
-    items: [] // No child items
+    shortcut: ['h', 'h'],
+    items: [],
   },
   {
-    title: 'Account',
-    url: '#', // Placeholder as there is no direct link for the parent
-    icon: 'billing',
-    isActive: true,
-
+    title: 'Vendors',
+    url: '/admin/vendor',
+    icon: 'store',
+    isActive: false,
+    shortcut: ['v', 'v'],
+    items: [],
+  },
+  {
+    title: 'Drivers',
+    url: '/admin/driver',
+    icon: 'car',
+    isActive: false,
+    shortcut: ['d', 'r'],
+    items: [],
+  },
+  {
+    title: 'Orders',
+    url: '#', // Placeholder for parent menu item
+    icon: 'list',
+    isActive: false,
     items: [
       {
-        title: 'Profile',
-        url: '/dashboard/profile',
-        icon: 'userPen',
-        shortcut: ['m', 'm']
+        title: 'serviceOrders',
+        url: '/admin/orders/service',
+        icon: 'package',
+        shortcut: ['s', 'o'],
       },
       {
-        title: 'Login',
-        shortcut: ['l', 'l'],
-        url: '/',
-        icon: 'login'
-      }
-    ]
+        title: 'deliveryOrders',
+        url: '/admin/orders/delivery',
+        icon: 'truck',
+        shortcut: ['d', 'o'],
+      },
+    ],
+  },
+
+  {
+    title: 'Stores',
+    url: '/admin/store',
+    icon: 'shoppingCart',
+    isActive: false,
+    shortcut: ['s', 't'],
+    items: [],
   },
   {
-    title: 'Kanban',
-    url: '/dashboard/kanban',
-    icon: 'kanban',
-    shortcut: ['k', 'k'],
+    title: 'Services',
+    url: '/admin/service/list',
+    icon: 'wrench',
     isActive: false,
-    items: [] // No child items
-  }
+    shortcut: ['s', 'v'],
+    items: [],
+  },
+  {
+    title: 'Events',
+    url: '/admin/event',
+    icon: '',
+    isActive: false,
+    shortcut: ['e', 'v'],
+    items: [],
+  },
+  // {
+  //   title: 'Account',
+  //   url: '#',
+  //   icon: 'settings',
+  //   isActive: true,
+  //   items: [
+  //     {
+  //       title: 'Profile',
+  //       url: '/admin/profile',
+  //       icon: 'userPen',
+  //       shortcut: ['p', 'r'],
+  //     },
+
+  //   ],
+  // },
+
+];
+
+export const VendorNavItems: NavItem[] = [
+  {
+    title: 'Dashboard',
+    url: '/vendor/overview',
+    icon: 'dashboard',
+    isActive: false,
+    shortcut: ['d', 'd'],
+    items: [], // No child items
+  },
+
+  {
+    title: 'Orders',
+    url: '#', // Placeholder for parent menu item
+    icon: 'list',
+    isActive: false,
+    items: [
+      {
+        title: 'serviceOrders',
+        url: '/vendor/orders/service',
+        icon: 'package',
+        shortcut: ['s', 'o'],
+      },
+      {
+        title: 'deliveryOrders',
+        url: '/vendor/orders/delivery',
+        icon: 'truck',
+        shortcut: ['d', 'o'],
+      },
+    ],
+  },
+
+  {
+    title: 'Stores',
+    url: '/vendor/store',
+    icon: 'shoppingCart',
+    isActive: false,
+    shortcut: ['s', 't'],
+    items: [],
+  },
+  {
+    title: 'Services',
+    url: '/vendor/service',
+    icon: 'wrench',
+    isActive: false,
+    shortcut: ['s', 'v'],
+    items: [],
+  },
+
+];
+
+
+export const CountriesCodes: CountriesCodes[] = [
+  {
+    code: 'SA',
+    dial_code: '966',
+    flag: '🇸🇦',
+    startDigit: 5,
+    minLength: 9,
+    maxLength: 9,
+  
+  },
+  {
+    code: 'EG',
+    dial_code: '20',
+    flag: '🇪🇬',
+    startDigit: 1,
+  },
 ];

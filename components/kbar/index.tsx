@@ -12,7 +12,7 @@ import { useMemo } from 'react';
 import RenderResults from './render-result';
 import useThemeSwitching from './use-theme-switching';
 
-export default function KBar({ children }: { children: React.ReactNode }) {
+export default function KBar({ children,navItems }: { children: React.ReactNode,navItems: any }) {
   const router = useRouter();
 
   const navigateTo = (url: string) => {

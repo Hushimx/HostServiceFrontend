@@ -1,0 +1,471 @@
+{
+    "common": {
+        "id": "ID",
+        "title": "Title",
+        "name": "Name",
+        "email": "Email",
+        "password": "Password",
+        "phone": "Phone Number",
+        "city": "City",
+        "country": "Country",
+        "address": "Address",
+        "add": "Add",
+        "role": "Role",
+        "edit_item": "Edit",
+        "delete_item": "Delete",
+        "cancel": "Cancel",
+        "locationUrl": "Location URL",
+        "description": "Description",
+        "description_ar": "Description in Arabic",
+        "add_new": "Add New",
+        "back": "Back",
+        "created_at": "Created At",
+        "save": "Save",
+        "confirm": "Confirm",
+        "image": "Image",
+        "delete_confirmation_title": "Delete Confirmation",
+        "delete_confirmation_description": "Are you sure you want to delete this item?",
+        "hotel_name": "Hotel Name",
+        "room_number": "Room Number",
+        "updating": "Updating",
+        "driver_name": "Driver Name",
+        "status": "Status",
+        "total": "Total",
+        "send": "Send",
+        "orders": "Orders",
+        "servicesOrders": "Service Orders",
+        "loading": "Loading",
+        "login": "Login",
+        "view_order": "View Order",
+        "manage_orders": "Manage Orders",
+        "assign_driver": "Assign Driver",
+        "assign_driver_description": "Assign Driver Description",
+        "edit_status": "Edit Status",
+        "edit_status_title": "Edit Order Status",
+        "edit_status_description": "Enter the status you want to change",
+        "edit_status_success": "Status updated successfully",
+        "select_status": "Select Status",
+        "select_driver": "Select Driver",
+        "assigning": "Assigning",
+        "assign": "Assign",
+        "no_changes_made": "No changes made",
+        "price": "Price",
+        "cities": "Cities",
+        "none": "None",
+        "validation": {
+            "required": "This field is required",
+            "min": "Text must be longer than {min} characters",
+            "max": "Text must be shorter than {max} characters",
+            "email": "Must be a valid email",
+            "url": "Must be a valid URL",
+            "numeric": "Must be a valid number",
+            "phone": "Please enter a valid phone number"
+        },
+        "placeholders": {
+            "name": "Enter Name",
+            "email": "Enter Email",
+            "password": "Enter Password",
+            "role": "Select Role",
+            "phone": "Enter Phone Number",
+            "address": "Enter Address",
+            "description": "Enter Description",
+            "locationUrl": "Enter Location URL",
+            "select_driver_placeholder": "Select Driver",
+            "product_name": "Enter Product Name",
+            "product_price": "Enter Price",
+            "store_name": "Enter Store Name",
+            "store_description_placeholder": "",
+            "description_ar": "Enter Description in Arabic",
+            "event_title": "Enter Event Title",
+            "event_description": "Enter Event Description",
+            "service_slug": "www.example.com/design-services",
+            "service_description": "Enter Service Description",
+            "select_driver": "Select Driver"
+        },
+        "table": {
+            "title": "Stores List",
+            "header": {
+                "city": "City",
+                "address": "Address"
+            }
+        }
+    },
+    "success": {
+        "updating": "Updating",
+        "add": "Added successfully",
+        "update": "Updated successfully",
+        "delete": "Deleted successfully",
+        "driver_assignment": "Driver registered",
+        "driver_assignment_success": "Driver assigned successfully"
+    },
+    "roles": {
+        "REGIONAL_ADMIN": "Regional Admin",
+        "SUPER_ADMIN": "Super Admin"
+    },
+    "payments": {
+        "cash_on_delivery": "Cash on Delivery"
+    },
+    "errors": {
+        "add": "An error occurred while adding. Please try again later.",
+        "update": "An error occurred while updating. Please try again later.",
+        "delete": "An error occurred while deleting. Please try again later.",
+        "fetch": "An error occurred while fetching data. Please try again later.",
+        "somethingWentWrong": "Something went wrong. Please try again later.",
+        "conflict": "There is a data conflict. Please check the details.",
+        "service_not_found": "Service not found.",
+        "invalid_room_uuid": "Invalid room ID.",
+        "place_order": "Failed to complete the order. Please try again later.",
+        "ongoing_order": "You already have an ongoing order. Please complete it first.",
+        "CLIENT_ALREADY_EXISTS": "A client with this name already exists.",
+        "ROOM_ALREADY_EXISTS": "A room with this name already exists.",
+        "CITY_ALREADY_EXISTS": "A city with this name already exists.",
+        "CITY_CONFLICT": "A city is already registered.",
+        "EMAIL_CONFLICT": "Email already exists.",
+        "SLUG_CONFLICT": "Service ID already exists.",
+        "driver_assignment": "An error occurred while registering the driver. Please try again later.",
+        "WHATSAPP_ERROR": "An error occurred with WhatsApp. Please try again later.",
+        "INVALID_WHATSAPP_NUMBER": "Phone number is not registered on WhatsApp.",
+        "PHONE_NUMBER_CONFLICT": "Phone number is already registered.",
+        "no_drivers_found": "No drivers found",
+        "toast_delete_not_found": "Item not found",
+        "no_changes_made": "No changes made",
+        "failed_update_service": "Failed to update service",
+        "fetch_drivers_error": "Error fetching drivers",
+        "status_errors_update": "Status errors update",
+        "status_update_error": "Error updating status",
+        "vendor_missing": "Vendor information is not available.",
+        "service_unavailable": "Service unavailable.",
+        "fetch_service": "Failed to fetch service details.",
+        "ONGOING_SERVICE_ORDER": "You already have an ongoing service order.",
+        "unknown": "An unknown error occurred.",
+        "driver_assignment_error": "Error assigning driver",
+        "404_page_not_found": "404 - Page Not Found"
+    },
+    "cities": {
+        "table": {
+            "title": "Cities List",
+            "description": "Manage Cities"
+        },
+        "add": {
+            "title": "Add New City"
+        },
+        "edit": {
+            "title": "Edit City Data"
+        },
+        "selector": {
+            "title": "Select City"
+        }
+    },
+    "drivers": {
+        "table": {
+            "title": "Drivers List",
+            "description": "Manage Drivers",
+            "name": "Driver Name"
+        },
+        "add": {
+            "title": "Add New Driver"
+        },
+        "edit": {
+            "title": "Edit Driver Data"
+        }
+    },
+    "orders": {
+        "deliveryOrders": "Delivery Orders",
+        "serviceOrders": "Service Orders",
+        "page_title": "Orders",
+        "card": {
+            "order_number": "Order Number:",
+            "service": "Service:",
+            "date": "Order Date:",
+            "client": "Client Name:",
+            "phone": "Phone Number:",
+            "note": "Notes:"
+        },
+        "info": {
+            "details": "Order Details",
+            "canceled": "Order Canceled",
+            "id": "Order ID",
+            "date": "Order Date",
+            "clientName": "Client Name",
+            "clientNumber": "Client Number",
+            "hotelName": "Hotel Name",
+            "roomNumber": "Room Number",
+            "paymentMethod": "Payment Method",
+            "notes": "Notes",
+            "noNotes": "No Notes",
+            "products": "Products",
+            "product": "Product",
+            "price": "Price",
+            "quantity": "Quantity",
+            "total": "Total",
+            "serviceName": "Service Name",
+            "updatedAt": "Updated At",
+            "service_request_details": "Service Request Details",
+            "order_cancelled": "Order Cancelled"
+        }
+    },
+    "room": {
+        "table": {
+            "title": "Rooms List"
+        },
+        "header": {
+            "number": "Room Number",
+            "type": "Room Type"
+        },
+        "qrCode": "Room QR Code"
+    },
+    "hotels": {
+        "table": {
+            "title": "Hotels List",
+            "manage_hotels": "Manage Hotels",
+            "name": "Hotel Name"
+        },
+        "add": {
+            "title": "Add New Hotel"
+        },
+        "edit": {
+            "title": "Edit Hotel Data"
+        }
+    },
+    "store": {
+        "table": {
+            "title": "Stores List",
+            "manage_stores": "Manage Stores"
+        },
+        "header": {
+            "name": "Store Name",
+            "catagory": "Category",
+            "edit_store_title": "Edit Store Data",
+            "store_image": "Store Image",
+            "section": "Section",
+            "manage_stores": "Manage Stores",
+            "store_description": "Store Description",
+            "image": "Store Image",
+            "banner": "Store Banner"
+        },
+        "edit": {
+            "title": "Edit Store Data"
+        },
+        "cart": {}
+    },
+    "clients": {
+        "header": {
+            "client_name": "Client Name"
+        },
+        "table": {
+            "title": "Clients List"
+        },
+        "edit": {
+            "title": "Edit Client Data"
+        }
+    },
+    "events": {
+        "see_events": "View Events",
+        "explore": "Explore Latest Events",
+        "about": "About Event",
+        "client": {
+            "go_to_location": "Go to Location"
+        },
+        "table": {
+            "write_name": "Write Event Name",
+            "title": "Events List"
+        },
+        "header": {
+            "title": "Event Title",
+            "title_ar": "Event Title in Arabic"
+        },
+        "add": {
+            "title": "Add Event"
+        },
+        "edit": {
+            "title": "Edit Client Data"
+        }
+    },
+    "cart": {
+        "view": "View Cart",
+        "title": "Products Cart",
+        "description": "You can view all products added to the cart",
+        "empty": "Cart is Empty",
+        "total": "Total"
+    },
+    "checkout": {
+        "title": "Complete Order",
+        "sucess": "Order Completed Successfully",
+        "orders_success_message": "Your order has been sent and we will contact you soon",
+        "total": "Total",
+        "confirmPurchase": "Confirm Purchase",
+        "loading": "Processing Order...",
+        "emptyCart": "Cart is Empty",
+        "addItemsToContinue": "Please add products to complete the order.",
+        "goBack": "Go Back",
+        "viewOrder": "View Order",
+        "errorTitle": "Error During Process",
+        "close": "Close"
+    },
+    "services": {
+        "loading_details": "Loading Service Details...",
+        "order_now": "Order Now",
+        "notes_placeholder": "Notes",
+        "error_generic": "An error occurred while processing the order.",
+        "table": {
+            "name": "Service Name",
+            "title": "Services List",
+            "manage_services": "Add Services",
+            "slug": "Service ID",
+            "view_order": "View Order",
+            "edit_status": "Edit Status",
+            "assign_driver": "Assign Driver",
+            "edit_status_title": "Edit Status Title",
+            "edit_status_description": "Edit Status Description",
+            "assign_driver_description": "Assign Driver Description",
+            "select_driver": "Select Driver",
+            "select_status": "Select Status"
+        },
+        "add": {
+            "title": "Add New Service"
+        },
+        "edit": {
+            "title": "Edit Service Data"
+        }
+    },
+    "services_cities": {
+        "table": {
+            "title": "Service Cities List"
+        },
+        "add": {
+            "title": "Register City"
+        },
+        "edit": {
+            "title": "Edit City Data"
+        }
+    },
+    "vendors": {
+        "table": {
+            "vendor": "Vendor",
+            "title": "Vendors List",
+            "vendor_list": "Vendors",
+            "vendor_email": "Vendor Email",
+            "vendor_phone": "Vendor Phone",
+            "vendor_city": "Vendor City",
+            "manage_vendors": "Manage Vendors",
+            "vendor_edit": "Edit Vendor Data"
+        },
+        "add": {
+            "title": "Add New Vendor"
+        },
+        "edit": {
+            "title": "Edit Vendor Data"
+        }
+    },
+    "countrys": {
+        "table": {
+            "title": "Countries List"
+        },
+        "selector": {
+            "title": "Select Country"
+        }
+    },
+    "rooms": {
+        "table": {
+            "title": "Rooms List",
+            "manage_rooms": "Manage Rooms",
+            "add_room": "Add Room",
+            "edit_room": "Edit Room",
+            "header": {
+                "number": "Room Number",
+                "type": "Room Type"
+            }
+        },
+        "add": {
+            "title": "Add New Room"
+        },
+        "edit": {
+            "title": "Edit Room Data"
+        }
+    },
+    "products": {
+        "table": {
+            "title": "Products List",
+            "name": "Product",
+            "manage_products": "Manage Products",
+            "price": "Price",
+            "product_photo": "Product Photo",
+            "create_product": "Create Product"
+        },
+        "add": {
+            "title": "Add New Product"
+        },
+        "edit": {
+            "title": "Edit Product Data"
+        }
+    },
+    "admins": {
+        "table": {
+            "title": "Admins List",
+            "description": "Manage Admins"
+        },
+        "add": {
+            "title": "Add New Admin"
+        },
+        "edit": {
+            "title": "Edit Admin Data"
+        }
+    },
+    "status": {
+        "PENDING": "New",
+        "PICKUP": "Ready for Pickup",
+        "IN_PROGRESS": "In Progress",
+        "ON_WAY": "On the Way",
+        "COMPLETED": "Completed",
+        "CANCELED": "Canceled"
+    },
+    "overview": {
+        "table": {
+            "welcome_back": "Welcome Back 👋",
+            "overview": "Overview",
+            "analytics": "Data Analytics",
+            "totalRevenue": "Total Revenue",
+            "totalRevenue_description": "Total Revenue Description",
+            "deliveryOrdersCount": "Delivery Orders Count",
+            "deliveryOrdersCount_description": "Delivery Orders Count Description",
+            "serviceOrdersCount": "Service Orders Count",
+            "serviceOrdersCount_description": "Service Orders Count Description",
+            "totalClients": "Total Clients",
+            "totalClients_description": "Total Clients Description"
+        }
+    },
+    "pagination": {
+        "pageSize": "Rows per page",
+        "next": "Next",
+        "prev": "Previous"
+      },
+      "qr": {
+        "title": "Generate QR Code",
+        "description": "Generate QR Code",
+        "downloadButton": "Download QR Code",
+        "printButton": "Print QR Code",
+        "generating": "Generating QR Code...",
+        "printTitle": "Print QR Code",
+        "roomName": "Room",
+        "unknownRoom": "Unknown Room"
+      },
+    "nav": {
+        "logout": "Logout",
+        "Dashboard": "Home Page",
+        "Admins": "Admins",
+        "Vendors": "Vendors",
+        "Orders": "Orders",
+        "deliveryOrders": "Delivery Orders",
+        "serviceOrders": "Service Orders",
+        "Services": "Services",
+        "Hotels": "Hotels",
+        "Rooms": "Rooms",
+        "Stores": "Stores",
+        "Drivers": "Drivers",
+        "Products": "Products",
+        "Events": "Events",
+        "Clients": "Clients",
+        "Countrys": "Countries",
+        "Cities": "Cities"
+    }
+}

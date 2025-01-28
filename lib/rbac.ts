@@ -1,4 +1,13 @@
 export enum Permission {
+
+  ACCESS_ALL =  "accessAll",
+  PERM_PHONE_NO_ACCESS_ALL_DRIVERS = 'permPhoneNoAccessAll:drivers',
+  ACCESS_ALL_DRIVERS = 'accessAll:drivers',
+  VIEW_DRIVERS = 'view:drivers',
+  CREATE_DRIVERS = 'create:drivers',
+  EDIT_DRIVERS = 'edit:drivers',
+  DELETE_DRIVERS = 'delete:drivers',
+
     VIEW_ADMINS = 'admins:read',
     CREATE_ADMINS = 'admins:create',
     EDIT_ADMINS = 'admins:update',
@@ -35,6 +44,11 @@ export enum Permission {
     CREATE_CATEGORIES = 'create:categories',
     EDIT_CATEGORIES = 'edit:categories',
     DELETE_CATEGORIES = 'delete:categories',
+    //store
+    VIEW_STORES = 'view:stores',
+    CREATE_STORES = 'create:stores',
+    EDIT_STORES = 'edit:stores',
+    DELETE_STORES = 'delete:stores',
   }
   
   export enum Role {
@@ -44,6 +58,15 @@ export enum Permission {
   
   export const RolePermissions: Record<Role, Permission[]> = {
     [Role.SUPER_ADMIN]: [
+
+      Permission.ACCESS_ALL,
+      Permission.ACCESS_ALL_DRIVERS,
+      Permission.VIEW_DRIVERS,
+      Permission.CREATE_DRIVERS,
+      Permission.EDIT_DRIVERS,
+      Permission.DELETE_DRIVERS,
+
+
       Permission.VIEW_ADMINS,
       Permission.CREATE_ADMINS,
       Permission.EDIT_ADMINS,
@@ -80,8 +103,18 @@ export enum Permission {
       Permission.CREATE_CATEGORIES,
       Permission.EDIT_CATEGORIES,
       Permission.DELETE_CATEGORIES,
+      Permission.VIEW_STORES,
+      Permission.CREATE_STORES,
+      Permission.EDIT_STORES,
+      Permission.DELETE_STORES
     ],
     [Role.REGIONAL_ADMIN]: [
+
+      Permission.VIEW_DRIVERS,
+      Permission.CREATE_DRIVERS,
+      Permission.EDIT_DRIVERS,
+      Permission.DELETE_DRIVERS,
+
       Permission.VIEW_HOTELS,
       Permission.CREATE_HOTELS,
       Permission.EDIT_HOTELS,
@@ -98,16 +131,25 @@ export enum Permission {
       Permission.CREATE_SERVICE_ORDERS,
       Permission.EDIT_SERVICE_ORDERS,
       Permission.DELETE_SERVICE_ORDERS,
+      Permission.VIEW_STORES,
+      Permission.CREATE_STORES,
+      Permission.EDIT_STORES,
+      Permission.DELETE_STORES
     ],
   };
   
+
+  
+
   export function hasPermission(
-    userPermissions: Permission[],
+    userRole: string,
     requiredPermission: Permission
   ): boolean {
-    return userPermissions.includes(requiredPermission);
+    return RolePermissions[userRole].includes(requiredPermission);
   }
-  
+
+
+
   export function hasAnyPermission(
     userPermissions: Permission[],
     requiredPermissions: Permission[]
@@ -116,4 +158,4 @@ export enum Permission {
       userPermissions.includes(permission)
     );
   }
-  
+
