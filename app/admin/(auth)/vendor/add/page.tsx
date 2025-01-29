@@ -52,13 +52,13 @@ const AddVendorPage: React.FC = () => {
       router.push('/admin/vendor');
     } catch (err) {
       if(err.details.code == "WHATSAPP_ERROR"){
-        toast.error('errors.WHATSAPP_ERROR');
+        toast.error(t('errors.WHATSAPP_ERROR'));
       }else if(err.details.code == "INVALID_WHATSAPP_NUMBER"){
-        toast.error('errors.INVALID_WHATSAPP_NUMBER');
+        toast.error(t('errors.INVALID_WHATSAPP_NUMBER'));
       }else if(err.details.code == "PHONE_NUMBER_CONFLICT"){
-        toast.error('errors.PHONE_NUMBER_CONFLICT');
+        toast.error(t('errors.PHONE_NUMBER_CONFLICT'));
       }else if(err.details.code == "EMAIL_CONFLICT"){ {
-        toast.error('errors.EMAIL_CONFLICT');
+        toast.error(t('errors.EMAIL_CONFLICT'));
       }}else{
         toast.error(t('errors.add'));
       }
