@@ -21,7 +21,7 @@ const DriverPage = () => {
     setError("");
     try {
       const response = await fetch(
-        `http://localhost:3000/driver/validate?type=${type}&code=${code}`,
+        `${process.env.NEXT_PUBLIC_API_URL}/driver/validate?type=${type}&code=${code}`,
         { method: "PATCH" }
       );
       if (!response.ok) {
@@ -45,7 +45,7 @@ const DriverPage = () => {
     setError("");
     try {
       const response = await fetch(
-        `http://localhost:3000/driver/update?type=${type}&orderId=${order.id}`,
+        `${process.env.NEXT_PUBLIC_API_URL}/driver/update?type=${type}&orderId=${order.id}`,
         {
           method: "PATCH",
           headers: { "Content-Type": "application/json" },

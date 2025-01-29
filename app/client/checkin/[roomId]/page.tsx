@@ -4,7 +4,7 @@ import { UUID } from "crypto";
 
 async function fetchRoom(roomId: UUID) {
   try {
-    const res = await fetch(`http://127.0.0.1:3333/client/room/${roomId}`, {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/client/room/${roomId}`, {
       cache: "no-store", // Ensures fresh data fetch
     });
 

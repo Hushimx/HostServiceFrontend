@@ -31,7 +31,7 @@ const LoginForm = () => {
   const Router = useRouter();
   const onSubmit = async (data) => {
     try {
-      const response = await fetch('http://127.0.0.1:3333/auth/signin', {
+      const response = await fetch(process.env.NEXT_PUBLIC_API_URL + '/auth/signin', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data),
