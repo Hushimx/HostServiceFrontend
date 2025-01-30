@@ -4,21 +4,7 @@ const { fa } = require('@faker-js/faker');
 const nextConfig = {
   images: {
     remotePatterns: [
-      {
-        protocol: 'https',
-        hostname: 'utfs.io',
-        port: ''
-      },
-      {
-        protocol: 'https',
-        hostname: 'api.slingacademy.com',
-        port: ''
-      },
-      {
-        protocol: 'http',
-        hostname: '127.0.0.1',
-        port: '3333'
-      },
+
       {
         protocol: 'https',
         hostname: 'via.placeholder.com',
@@ -33,14 +19,11 @@ const nextConfig = {
         hostname: 'cdn-icons-png.flaticon.com',
         port: ''
       },
+
+
       {
         protocol: 'https',
-        hostname: 'img.freepik.com',
-        port: ''
-      },
-      {
-        protocol: 'https',
-        hostname: 'www.albaik.com',
+        hostname: Process.env.NEXT_PUBLIC_API_URL,
         port: ''
       }
     ]

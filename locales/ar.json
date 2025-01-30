@@ -2,6 +2,7 @@
     "common": {
       "id": "المعرف",
       "title": "العنوان",
+      "goTo": "الذهاب الى",
       "name": "الاسم",
       "email": "البريد الإلكتروني",
       "password": "كلمة السر",
@@ -92,6 +93,7 @@
     },
     "success": {
       "updating": "يتم التحديث",
+      "login":"تم تسجيل الدخول بنجاح",
       "add": "تم الإضافة بنجاح",
       "update": "تم التحديث بنجاح",
       "delete": "تم الحذف بنجاح",
@@ -476,5 +478,33 @@
       "Cities": "المدن"
 
 
+    },
+    "landing": {
+      "video_not_supported": "متصفحك لا يدعم تشغيل الفيديو.",
+      "welcome": "مرحبًا بكم في هوست",
+      "subtitle": "خدمات الضيافة الفندقية والسياحية لتجربة نزلاء فريدة.",
+      "services_title": "خدماتنا",
+      "restaurant_orders": "طلبات المطعم",
+      "restaurant_description": "تشكيلة متنوعة من الأطعمة والوجبات.",
+      "pharmacy": "صيدلية",
+      "pharmacy_description": "توفير الأدوية ومستحضرات العناية.",
+      "laundry": "مغسلة ملابس",
+      "laundry_description": "خدمة غسيل وكي الملابس للنزلاء.",
+      "market": "ماركت",
+      "market_description": "توفير احتياجات النزلاء من الأغذية.",
+      "about_title": "من نحن",
+      "about_description": "برنامج هوست هو...",
+      "about_alt": "من نحن",
+      "join_us_title": "انضم إلينا",
+      "driver": "سائق",
+      "driver_description": "انضم إلينا كسائق...",
+      "vendor": "بائع",
+      "vendor_description": "كن شريكًا...",
+      "coming_soon": "قريبًا",
+      "contact_title": "تواصل معنا",
+      "whatsapp": "واتساب",
+      "footer_rights": "برنامج هوست. جميع الحقوق محفوظة.",
+      "contact_us": "تواصل معنا"
     }
+  
   }

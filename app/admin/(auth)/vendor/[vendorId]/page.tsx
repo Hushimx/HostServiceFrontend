@@ -185,7 +185,7 @@ const EditVendorPage: React.FC = () => {
           <Input {...register('password')} type="password" placeholder={t("common.placeholders.password")} />
         </div>
         <div className="flex justify-end gap-2">
-          <Button variant="outline" onClick={() => router.push('/admin/vendor')}>
+          <Button variant="outline" type='button' onClick={() => router.push('/admin/vendor')}>
             {t("common.cancel")}
           </Button>
           <Button type="submit">{t("common.save")}</Button>

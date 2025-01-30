@@ -11,10 +11,11 @@ import { useRouter } from 'next/navigation';
 import { useMemo } from 'react';
 import RenderResults from './render-result';
 import useThemeSwitching from './use-theme-switching';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 export default function KBar({ children,navItems }: { children: React.ReactNode,navItems: any }) {
   const router = useRouter();
-
+  const { t } = useLanguage()
   const navigateTo = (url: string) => {
     router.push(url);
   };
@@ -28,11 +29,11 @@ export default function KBar({ children,navItems }: { children: React.ReactNode,
           navItem.url !== '#'
             ? {
                 id: `${navItem.title.toLowerCase()}Action`,
-                name: navItem.title,
+                name: t(`nav.${navItem.title}`),
                 shortcut: navItem.shortcut,
                 keywords: navItem.title.toLowerCase(),
                 section: 'Navigation',
-                subtitle: `Go to ${navItem.title}`,
+                subtitle: `${t('common.goTo')} ${t(`nav.${navItem.title}`)}`,
                 perform: () => navigateTo(navItem.url)
               }
             : null;
@@ -41,11 +42,11 @@ export default function KBar({ children,navItems }: { children: React.ReactNode,
         const childActions =
           navItem.items?.map((childItem) => ({
             id: `${childItem.title.toLowerCase()}Action`,
-            name: childItem.title,
+            name: t(`nav.${navItem.title}`),
             shortcut: childItem.shortcut,
             keywords: childItem.title.toLowerCase(),
             section: navItem.title,
-            subtitle: `Go to ${childItem.title}`,
+            subtitle: `${t('common.goTo')} ${t(`nav.${navItem.title}`)}`,
             perform: () => navigateTo(childItem.url)
           })) ?? [];
 

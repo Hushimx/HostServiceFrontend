@@ -80,7 +80,7 @@ const AddDriverPage: React.FC = () => {
               <Field
                 name="name"
                 as={Input}
-                placeholder={t('common.placeholder.name')}
+                placeholder={t('common.placeholders.name')}
               />
               {touched.name && errors.name && (
                 <p className="text-sm text-red-500">{errors.name}</p>
@@ -93,7 +93,7 @@ const AddDriverPage: React.FC = () => {
               <Field
                 name="phoneNo"
                 as={Input}
-                placeholder={t('common.placeholder.phone')}
+                placeholder={t('common.placeholders.name')}
               />
               {touched.phoneNo && errors.phoneNo && (
                 <p className="text-sm text-red-500">{errors.phoneNo}</p>

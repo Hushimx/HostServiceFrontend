@@ -68,7 +68,7 @@ export const CellAction: React.FC<{ data: any,setRefresh:Function }> = ({ data,s
       >
         <div className="flex justify-end gap-2">
           <Button variant="outline" onClick={() => setDialogOpen(false)}>
-            {t("common.ancel")}
+            {t("common.cancel")}
           </Button>
           <Button variant="destructive" onClick={handleDelete}>
             {t("common.confirm")}

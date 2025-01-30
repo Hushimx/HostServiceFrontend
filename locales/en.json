@@ -2,6 +2,7 @@
     "common": {
         "id": "ID",
         "title": "Title",
+        "goTo": "Go To",
         "name": "Name",
         "email": "Email",
         "password": "Password",
@@ -91,6 +92,7 @@
         }
     },
     "success": {
+        "login": "Logged in successfully",
         "updating": "Updating",
         "add": "Added successfully",
         "update": "Updated successfully",
@@ -467,5 +469,33 @@
         "Clients": "Clients",
         "Countrys": "Countries",
         "Cities": "Cities"
-    }
+    },
+    "landing": {
+        "video_not_supported": "Your browser does not support video playback.",
+        "welcome": "Welcome to Host",
+        "subtitle": "Hotel and tourism hospitality services for a unique guest experience.",
+        "services_title": "Our Services",
+        "restaurant_orders": "Restaurant Orders",
+        "restaurant_description": "A wide selection of meals and dishes.",
+        "pharmacy": "Pharmacy",
+        "pharmacy_description": "Providing medicines and personal care products.",
+        "laundry": "Laundry Service",
+        "laundry_description": "Laundry and ironing service for guests.",
+        "market": "Market",
+        "market_description": "Providing guests with groceries and essentials.",
+        "about_title": "About Us",
+        "about_description": "Host is an advanced electronic platform specializing in hospitality and tourism services. We help establishments improve their services and provide comfort to guests through innovative and easy-to-use solutions.",
+        "about_alt": "About Us",
+        "join_us_title": "Join Us",
+        "driver": "Driver",
+        "driver_description": "Join us as a driver to provide the best delivery services and ensure customer satisfaction.",
+        "vendor": "Vendor",
+        "vendor_description": "Become a partner and create an outstanding shopping experience with our services.",
+        "coming_soon": "Coming Soon",
+        "contact_title": "Contact Us",
+        "whatsapp": "WhatsApp",
+        "footer_rights": "Host Program. All rights reserved.",
+        "contact_us": "Contact us"
+      }
+    
 }

@@ -63,7 +63,7 @@ const EditDriverPage: React.FC = () => {
           body: modifiedFields,
           headers: { "Content-Type": "application/json" },
         });
-        toast.success(t("errors.update"));
+        toast.success(t("success.update"));
         router.push("/admin/driver");
       } catch (err) {
         if(err.details.code == "WHATSAPP_ERROR"){

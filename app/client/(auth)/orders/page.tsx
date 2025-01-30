@@ -39,7 +39,7 @@ const OrdersPage = () => {
   const [selectedTab, setSelectedTab] = useState("deliveryOrders");
   const [loading, setLoading] = useState(false);
 
-  const tabs = ["deliveryOrders", "serviceOrders", "bookings"];
+  const tabs = ["deliveryOrders", "serviceOrders"];
 
   // Fetch delivery orders
   const fetchDeliveryOrders = async () => {
@@ -141,7 +141,7 @@ const OrdersPage = () => {
       </div>
 
       {/* Tabs */}
-      <div className="flex justify-center space-x-4 mb-6">
+      <div className="flex justify-center gap-4 mb-6">
         {tabs.map((tab) => (
           <button
             key={tab}
@@ -165,12 +165,11 @@ const OrdersPage = () => {
       ) : filteredOrders.length === 0 ? (
         <div className="text-center text-gray-500 mt-10">
           <img
-            src="/assets/images/empty-orders.svg"
-            alt="No orders found"
+            src="/assets/icons/no-order.png"
+            alt="No orders yet"
             className="w-32 h-32 mx-auto mb-4"
           />
-          <p className="text-lg font-medium">{t("no_orders_yet") || "No orders yet."}</p>
-          <p className="text-sm text-gray-400">{t("check_back_later") || "Check back later."}</p>
+          <p className="text-lg font-medium">{ "No orders yet."}</p>
         </div>
       ) : (
         <div className="space-y-4">

@@ -1,5 +1,6 @@
 "use client";
 
+import Loading from "@/app/client/checkin/[roomId]/loading";
 import NotFound from "@/app/not-found";
 import { StoreGrid } from "@/components/client/store/storesGrid";
 import Error from "@/components/ui/error";
@@ -14,6 +15,7 @@ export default function AllStoresPage({ params }: { params: { section?: string }
   >(null);
   const [sectionData, setSectionData] = useState<{ name: string; name_ar: string } | null>(null);
   const [error, setError] = useState(false);
+  const [loading, setLoading] = useState(true);
   const { user } = useClientAuth();
   const { language } = useLanguage();
 
@@ -22,6 +24,7 @@ export default function AllStoresPage({ params }: { params: { section?: string }
       if (!section) {
         console.error("No section provided");
         setError(true);
+        setLoading(false);
         return;
       }
 
@@ -38,37 +41,32 @@ export default function AllStoresPage({ params }: { params: { section?: string }
         if (!response.ok) {
           console.error("Failed to fetch stores:", response.status);
           setError(true);
-          return;
-        }
-
-        const data = await response.json();
-        if (data?.stores?.length > 0) {
+        } else {
+          const data = await response.json();
           setStores(data.stores);
           setSectionData({ name: data.name, name_ar: data.name_ar });
-        } else {
-          console.error("No stores found in the response");
-          setError(true);
         }
       } catch (err) {
         console.error("Error fetching stores:", err);
         setError(true);
+      } finally {
+        setLoading(false);
       }
     }
 
     fetchStores();
   }, [section, user.token]);
 
-  if (error) {
-    return (
-      <Error />
-
-    );
+  if (loading) {
+    return <Loading />;
   }
 
-  if (!stores) {
-    return (
-      <NotFound />
-    );
+  if (error) {
+    return <Error />;
+  }
+
+  if (!stores || stores.length === 0 && !loading) {
+    return <NotFound />;
   }
 
   return (
