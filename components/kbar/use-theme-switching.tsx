@@ -1,9 +1,10 @@
+import { useLanguage } from '@/contexts/LanguageContext';
 import { useRegisterActions } from 'kbar';
 import { useTheme } from 'next-themes';
 
 const useThemeSwitching = () => {
   const { theme, setTheme } = useTheme();
-
+  const { language,t } = useLanguage();
   const toggleTheme = () => {
     setTheme(theme === 'light' ? 'dark' : 'light');
   };
@@ -11,26 +12,26 @@ const useThemeSwitching = () => {
   const themeAction = [
     {
       id: 'toggleTheme',
-      name: 'Toggle Theme',
+      name: t("common.toggleTheme"),
       shortcut: ['t', 't'],
-      section: 'Theme',
+      section: t("common.theme"),
       perform: toggleTheme
     },
     {
       id: 'setLightTheme',
-      name: 'Set Light Theme',
-      section: 'Theme',
+      name: t("common.setLightTheme"),
+      section: t("common.theme"),
       perform: () => setTheme('light')
     },
     {
       id: 'setDarkTheme',
-      name: 'Set Dark Theme',
-      section: 'Theme',
+      name: t("common.setDarkTheme"),
+      section: t("common.theme"),
       perform: () => setTheme('dark')
     }
   ];
 
-  useRegisterActions(themeAction, [theme]);
+  useRegisterActions(themeAction, [theme,language]);
 };
 
 export default useThemeSwitching;
