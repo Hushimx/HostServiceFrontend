@@ -1,8 +1,6 @@
 import Header from "@/components/client/header";
-import { useLanguage } from "@/contexts/LanguageContext";
 
 export default function Page() {
-  const {t} = useLanguage()
   return (
     <>
       {<Header />}
