@@ -26,7 +26,7 @@ export default function OverViewPage() {
       setError(null); // Reset error state
       try {
         const data = await fetchFromNest(
-          `/vendor/overview}`
+          `/vendor/overview`
         );
         setOverviewData(data);
       } catch (error) {

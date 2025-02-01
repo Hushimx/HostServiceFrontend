@@ -14,7 +14,7 @@ import { useLanguage } from "@/contexts/LanguageContext";
 import ResponsiveDialog from "@/components/responsiveDialog";
 import { useParams, useRouter } from "next/navigation";
 
-export const CellAction: React.FC<{ data: any,setRefresh:Function }> = ({ data,setRefresh }) => {
+export const CellAction: React.FC<{ data: any,setRefresh:any }> = ({ data,setRefresh }) => {
   const { t } = useLanguage();
   const router = useRouter();
   const {storeId} = useParams()
@@ -61,7 +61,7 @@ export const CellAction: React.FC<{ data: any,setRefresh:Function }> = ({ data,s
       </DropdownMenu>
 
       <ResponsiveDialog
-        title={t("common.common.delete_confirmation_title")}
+        title={t("common.delete_confirmation_title")}
         description={t("common.delete_confirmation_description")}
         open={dialogOpen}
         setOpen={setDialogOpen}

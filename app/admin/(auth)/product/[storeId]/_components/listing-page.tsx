@@ -29,8 +29,8 @@ export default function ProductListingPage() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<number | null>(null); // Store error code if any
   const [meta, setMeta] = useState({ currentPage: page, lastPage: 1 });
-
-  const columns = getColumns(t);
+  const [refresh, setRefresh] = useState(0);
+  const columns = getColumns(t,setRefresh);
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -68,7 +68,7 @@ export default function ProductListingPage() {
     };
 
     fetchProducts();
-  }, [page, limit, name, storeId]);
+  }, [page, limit, name, storeId,refresh]);
 
   const handlePageChange = (newPage: number) => {
     const params = new URLSearchParams(searchParams.toString());

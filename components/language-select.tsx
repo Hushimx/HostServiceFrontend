@@ -4,7 +4,7 @@ import { useLanguage } from '@/contexts/LanguageContext'; // Assuming you have a
 import { Button } from './ui/button';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuTrigger, DropdownMenuItem } from './ui/dropdown-menu';
 
-export default function LanguageSelect({btnClassName}) {
+export default function LanguageSelect({btnClassName} : {btnClassName?: string}) {
   const { language, setLanguage } = useLanguage(); // Use language context or similar logic
 
   // On component mount, check for the language in local storage

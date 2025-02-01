@@ -14,6 +14,8 @@
       "add": "إضافة",
       "role": "الصلاحية",
       "edit_item": "تعديل",
+      "upload": "ارفع هنا",
+      "no_data": "لا يوجد بيانات",
       "delete_item": "حذف",
       "cancel": "إلغاء",
       "locationUrl": "رابط اللوكيشن",
@@ -150,6 +152,23 @@
       "404_page_not_found": "404 - Page Not Found"
 
     },
+"login": {
+    "admin": {
+        "login_title": "قسم المشرفيين - HostService",
+        "login_heading": "تسجيل دخول المشرف",
+        "login_subtitle": " يرجى تسجيل الدخول للمتابعة."
+    },
+    "vendor": {
+      "login_title": "المورّد - HostService",
+      "login_heading": "تسجيل دخول المورّد",
+      "login_subtitle": "هذه هي لوحة تسجيل الدخول للمورّد. يرجى تسجيل الدخول للمتابعة."
+    },
+    "success": "تم تسجيل الدخول بنجاح!",
+    "invalid_credentials": "اسم المستخدم أو كلمة المرور غير صحيحة",
+    "error": "حدث خطأ غير متوقع، يرجى المحاولة مرة أخرى لاحقًا",
+    "server_error": "فشل الاتصال بالخادم"
+},
+
     "cities": {
       "table": {
         "title": "قائمة المدن",
@@ -464,6 +483,13 @@
       "roomName": "الغرفة",
       "unknownRoom": "غرفة غير معروفه"
     },
+    "filters": {
+      "trigger": "الفلاتر",
+      "filterBy": "فلتر بواسطة",
+      "apply": "تطبيق",
+      "reset": "مسح الفلاتر",
+      "applying": "جاري التطبيق..."
+        },
     "nav": {
       "logout": "تسجيل الخروج",
       "Dashboard": "الصفحة الرئيسية",

@@ -13,7 +13,8 @@ import {
 } from '@/components/ui/dropdown-menu';
 import { useDashboardAuth } from '@/contexts/AdminAuthContext';
 import { useLanguage } from '@/contexts/LanguageContext';
-export function UserNav({user}) {
+import { log } from 'console';
+export function UserNav({user,logout}) {
   const { t } = useLanguage()
   if (true) {
     return (
@@ -41,8 +42,8 @@ export function UserNav({user}) {
             </div>
           </DropdownMenuLabel>
           <DropdownMenuSeparator />
-          <DropdownMenuItem onClick={() => {}}>
-            {t("logout")}
+          <DropdownMenuItem onClick={() => {logout()}}>
+            {t("nav.logout")}
           </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>

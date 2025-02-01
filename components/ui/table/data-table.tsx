@@ -8,6 +8,7 @@ import {
   TableHeader,
   TableRow
 } from '@/components/ui/table';
+import { useLanguage } from '@/contexts/LanguageContext';
 import {
   ColumnDef,
   flexRender,
@@ -29,7 +30,7 @@ export function DataTable<TData, TValue>({
     columns,
     getCoreRowModel: getCoreRowModel()
   });
-
+  const { t } = useLanguage()
   return (
     <div className="space-y-4">
       <ScrollArea className="grid h-[calc(80vh-220px)] rounded-md border md:h-[calc(90dvh-240px)]">
@@ -73,7 +74,7 @@ export function DataTable<TData, TValue>({
                   colSpan={columns.length}
                   className="h-24 text-center"
                 >
-                  No results.
+                  {t('common.no_data')}
                 </TableCell>
               </TableRow>
             )}

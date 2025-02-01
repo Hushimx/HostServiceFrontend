@@ -118,12 +118,7 @@ export default function StoresListingPage() {
             title={`${t("store.table.title")} (${totalStores})`}
             description={t("store.table.manage_stores")}
           />
-          <Link
-            href={`/vendor/store/add`} // Adjust to your "Add Store" route
-            className={cn(buttonVariants({ variant: "default" }))}
-          >
-            {t("common.add_new")}
-          </Link>
+
         </div>
 
         <Separator />

@@ -74,6 +74,9 @@ const validationSchema = (t: (key: string) => string) =>
       });
       toast.success(t("success.add"));
       resetForm();
+      setTimeout(() => {
+        router.push('/admin/event');
+      }, 1500);
     } catch (err) {
       toast.error(t("errors.somethingWentWrong"));
     } finally {

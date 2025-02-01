@@ -29,10 +29,10 @@ const EditAdminPage: React.FC = () => {
 
   const validationSchema = Yup.object().shape({
     name: Yup.string()
-      .min(2, t("validation_min_length"))
+      .min(2, t("common.validation.min", { min: 2 }))
       .required(t("common.validation.required")),
     email: Yup.string()
-      .email(t("validation_email_valid"))
+      .email(t("validation.email"))
       .required(t("common.validation.required")),
     password: Yup.string(),
     role: Yup.string().required(t("common.validation.required")),

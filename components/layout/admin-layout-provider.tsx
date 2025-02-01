@@ -19,7 +19,7 @@ export default function AdminLayoutProvider({sidebarState,navItems,children}) {
     <SidebarProvider defaultOpen={sidebarState}>
     <AppSidebar navItems={navItems} user={user} role={role} logout={Logout} />
     <SidebarInset>
-      <Header user={user} />
+      <Header user={user}  logout={Logout} />
       {/* page main content */}
       {children}
       {/* page main content ends */}

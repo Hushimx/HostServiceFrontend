@@ -8,6 +8,7 @@ import { Toaster, toast } from "sonner";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import Logo from "@/components/logo";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 // Define the schema using zod
 const loginSchema = z.object({
@@ -28,7 +29,10 @@ const LoginForm = () => {
   } = useForm({
     resolver: zodResolver(loginSchema),
   });
+
   const Router = useRouter();
+  const { t } = useLanguage(); // Language translation function
+
   const onSubmit = async (data) => {
     try {
       const response = await fetch(process.env.NEXT_PUBLIC_API_URL + "/vendor/auth/signin", {
@@ -39,28 +43,28 @@ const LoginForm = () => {
       });
 
       if (response.ok) {
-        toast.success("Logged in successfully!", { duration: 3000 });
+        toast.success(t("login.success"), { duration: 3000 });
         await new Promise((resolve) => setTimeout(resolve, 2000));
         Router.push("/vendor");
       } else if (response.status === 401) {
-        setError("password", { message: "Invalid username or password" });
-        toast.error("Invalid username or password");
+        setError("password", { message: t("login.invalid_credentials") });
+        toast.error(t("login.invalid_credentials"));
       } else {
-        toast.error("An unexpected error occurred, please try again later");
+        toast.error(t("login.error"));
       }
     } catch (error) {
-      toast.error("Failed to connect to the server");
+      toast.error(t("login.server_error"));
     }
   };
 
-  // Safely extract error messages
+  // Extract error messages safely
   const getErrorMessage = (field) =>
     errors[field]?.message ? String(errors[field].message) : null;
 
   return (
     <>
       <Head>
-        <title>Vendor - HostService</title>
+        <title>{t("login.vendor.login_title")}</title>
       </Head>
 
       <div
@@ -72,14 +76,13 @@ const LoginForm = () => {
         }}
       >
         <div className="w-full max-w-md p-8 bg-white bg-opacity-90 text-gray-900 rounded-lg shadow-2xl">
-          <Logo />
 
-          {/* Title */}
+          {/* Vendor Title */}
           <h1 className="text-3xl font-bold text-center mb-6">
-            Welcome Back!
+            {t("login.vendor.login_heading")}
           </h1>
           <p className="text-center text-gray-600 mb-6">
-            Please login to continue to your dashboard.
+            {t("login.vendor.login_subtitle")}
           </p>
 
           {/* Global Error Message */}
@@ -97,13 +100,13 @@ const LoginForm = () => {
                 htmlFor="email"
                 className="block text-sm font-medium text-gray-700 mb-1"
               >
-                Email Address
+                {t("common.email")}
               </label>
               <input
                 id="email"
                 type="email"
                 {...register("email")}
-                placeholder="Enter your email"
+                placeholder={t("common.placeholders.email")}
                 className={`w-full p-3 border rounded focus:ring-2 focus:ring-blue-500 focus:outline-none transition-all ${
                   errors.email ? "border-red-500" : "border-gray-300"
                 }`}
@@ -121,13 +124,13 @@ const LoginForm = () => {
                 htmlFor="password"
                 className="block text-sm font-medium text-gray-700 mb-1"
               >
-                Password
+                {t("common.password")}
               </label>
               <input
                 id="password"
                 type="password"
                 {...register("password")}
-                placeholder="Enter your password"
+                placeholder={t("common.placeholders.password")}
                 className={`w-full p-3 border rounded focus:ring-2 focus:ring-blue-500 focus:outline-none transition-all ${
                   errors.password ? "border-red-500" : "border-gray-300"
                 }`}
@@ -144,11 +147,9 @@ const LoginForm = () => {
               className="w-full bg-purple-600 text-white hover:bg-white hover:text-black"
               disabled={isSubmitting}
             >
-              {isSubmitting ? "Loading..." : "Log In"}
+              {isSubmitting ? t("common.loading") : t("common.login")}
             </Button>
           </form>
-
-
         </div>
       </div>
     </>

@@ -1,5 +1,6 @@
 "use client";
 
+import { useLanguage } from "@/contexts/LanguageContext";
 import React, { useRef, useState } from "react";
 
 interface ImageUploadProps {
@@ -10,7 +11,7 @@ interface ImageUploadProps {
 export const ImageUpload: React.FC<ImageUploadProps> = ({ value, onChange }) => {
   const fileInputRef = useRef<HTMLInputElement | null>(null);
   const [preview, setPreview] = useState<string | null>(value || null); // Preview state for new image or URL
-
+  const { t } = useLanguage();
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0] || null;
     if (file) {
@@ -37,7 +38,7 @@ export const ImageUpload: React.FC<ImageUploadProps> = ({ value, onChange }) => 
           className="w-full h-full object-contain rounded"
         />
       ) : (
-        <span className="text-gray-500">Upload Now</span>
+        <span className="text-gray-500">{t("common.upload")}</span>
       )}
       <input
         type="file"

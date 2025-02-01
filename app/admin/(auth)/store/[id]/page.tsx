@@ -39,7 +39,7 @@ const EditStorePage: React.FC = () => {
 
   const validationSchema = Yup.object().shape({
     name: Yup.string()
-      .min(2, t("validation_min_length"))
+      .min(2, t("common.validation.min", { min: 2 }))
       .required(t("common.validation.required")),
     address: Yup.string().required(t("common.validation.required")),
     cityId: Yup.number().required(t("common.validation.required")),

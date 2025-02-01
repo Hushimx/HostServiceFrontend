@@ -45,7 +45,7 @@ const AddDriverPage: React.FC = () => {
       });
       toast.success(t('success.add'));
       setTimeout(() => {
-        // router.push('/admin/driver');
+        router.push('/admin/driver');
       }, 1500);
     } catch (err) {
       if(err.details.code == "WHATSAPP_ERROR"){

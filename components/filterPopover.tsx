@@ -13,6 +13,7 @@ import {
   SelectItem,
 } from "@/components/ui/select";
 import { useQueryParams } from "@/hooks/use-queryParams";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 interface FilterColumn {
   id: string;
@@ -31,8 +32,8 @@ export const FilterPopover: React.FC<FilterPopoverProps> = ({
   isApplyingFilters,
 }) => {
   const { getQueryParams, updateQueryParams, clearQueryParams } =
-    useQueryParams();
-
+  useQueryParams();
+  const { t } = useLanguage()
   const [localFilters, setLocalFilters] = useState<Record<string, string>>(
     getQueryParams() || {}
   );
@@ -57,20 +58,24 @@ export const FilterPopover: React.FC<FilterPopoverProps> = ({
 
   const handleReset = () => {
     setLocalFilters({});
-    clearQueryParams(filterColumns.map((col) => col.id));
+    // clearQueryParams(filterColumns.map((col) => col.id));
+    clearQueryParams(Object.keys(getQueryParams()));
   };
 
   return (
     <Popover>
       <PopoverTrigger asChild>
-        <Button variant="outline">Filter</Button>
+        <div className="relative">
+          <span className="w-5 h-5 text-center rounded-full bg-purple-700 text-white absolute -top-3 right-0">{Object.keys(getQueryParams()).length}</span>
+        <Button variant="outline">{t("filters.trigger")}</Button>
+        </div>
       </PopoverTrigger>
       <PopoverContent className="max-h-96 overflow-y-auto w-80">
         <div className="p-4">
           {filterColumns.map(({ id: columnId,label, type, options }) => (
             <div key={columnId} className="mb-4">
               <label className="block text-sm font-medium mb-1">
-                Filter by {label || columnId}
+                {t("filters.filterBy")} {label || columnId}
               </label>
               {type === "select" && options ? (
                 <Select
@@ -94,7 +99,7 @@ export const FilterPopover: React.FC<FilterPopoverProps> = ({
                 </Select>
               ) : (
                 <Input
-                  placeholder={`Enter ${label || columnId}`}
+                  placeholder={` ${label || columnId}`}
                   value={localFilters[columnId] || ""}
                   onChange={(e) =>
                     handleInputChange(columnId, e.target.value)
@@ -105,10 +110,10 @@ export const FilterPopover: React.FC<FilterPopoverProps> = ({
           ))}
           <div className="flex justify-between mt-4">
             <Button variant="outline" size="sm" onClick={handleReset}>
-              Reset
+              {t("filters.reset")}
             </Button>
             <Button size="sm" onClick={handleApply} disabled={isApplyingFilters}>
-              {isApplyingFilters ? "Applying..." : "Apply"}
+              {isApplyingFilters ? t("filters.applying") : t("filters.apply")}
             </Button>
           </div>
         </div>

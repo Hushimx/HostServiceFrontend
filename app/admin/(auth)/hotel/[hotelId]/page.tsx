@@ -27,7 +27,7 @@ const EditHotelPage: React.FC = () => {
   const [originalData, setOriginalData] = useState<any>({});
 
   const EditHotelSchema = Yup.object().shape({
-    name: Yup.string().min(2, t('validation_min_length')).required(t('common.validation.required')),
+    name: Yup.string().min(2, t('common.validation.min', { min: 2 })).required(t('common.validation.required')),
     address: Yup.string().optional(),
     cityId: Yup.number().required(t('common.validation.required')),
     locationUrl: Yup.string().url(t('validation_invalid_url')).optional(),
@@ -136,7 +136,7 @@ const EditHotelPage: React.FC = () => {
           </div>
         )}
         <div>
-          <label className="block text-sm font-medium">{t('hotel_city')}</label>
+          <label className="block text-sm font-medium">{t('common.city')}</label>
           <CitySelect
             countryId={selectedCountry}
             initialValue={+formik.values.cityId}

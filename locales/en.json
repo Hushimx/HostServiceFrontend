@@ -9,6 +9,8 @@
         "password": "Password",
         "phone": "Phone Number",
         "city": "City",
+        "upload": "Upload", 
+        "no_data": "No Data Available", 
         "country": "Country",
         "address": "Address",
         "add": "Add",
@@ -149,6 +151,18 @@
         "unknown": "An unknown error occurred.",
         "driver_assignment_error": "Error assigning driver",
         "404_page_not_found": "404 - Page Not Found"
+    },
+    "login": {
+        "admin": {
+            "login_title": "Admin - HostService",
+            "login_heading": "Admin Login",
+            "login_subtitle": "This is the admin login panel. Please log in to continue."        
+        },
+        "success": "Logged in successfully!",
+        "invalid_credentials": "Invalid username or password",
+        "error": "An unexpected error occurred, please try again later",
+        "server_error": "Failed to connect to the server"
+    
     },
     "cities": {
         "table": {
@@ -458,6 +472,13 @@
         "roomName": "Room",
         "unknownRoom": "Unknown Room"
       },
+      "filters": {
+        "trigger": "Filters",
+        "filterBy": "Filter By",
+        "apply": "Apply",
+        "reset": "Reset Filters",
+        "applying": "Applying Filters..."
+          },
     "nav": {
         "logout": "Logout",
         "Dashboard": "Home Page",

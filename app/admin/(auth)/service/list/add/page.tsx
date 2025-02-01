@@ -29,7 +29,7 @@ const AddServicePage: React.FC = () => {
       .matches(/^[a-z0-9-]+$/, t('validation_slug_invalid'))
       .required(t('common.validation.required')),
     description: Yup.string()
-      .min(10, t('validation_min_length'))
+      .min(10, t('common.validation.min', { min: 10 }))
       .required(t('common.validation.required')),
   });
 

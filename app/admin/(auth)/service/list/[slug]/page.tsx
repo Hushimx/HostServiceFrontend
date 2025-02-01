@@ -23,7 +23,7 @@ const EditServicePage: React.FC = () => {
   const [originalData, setOriginalData] = useState<any>({});
 
   const EditServiceSchema = Yup.object().shape({
-    name: Yup.string().min(2, t('validation_min_length')).required(t('common.validation.required')),
+    name: Yup.string().min(2, t('common.validation.min', { min: 2 })).required(t('common.validation.required')),
     description: Yup.string().required(t('common.validation.required')),
   });
 

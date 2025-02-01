@@ -111,7 +111,9 @@ const EditRoomPage: React.FC = () => {
           )}
         </div>
         <div className="flex justify-end gap-2">
-          <Button variant="outline" onClick={() => router.push(`/admin/room/${hotelId}`)}>
+          <Button variant="outline" 
+          type="button"
+          onClick={() => router.push(`/admin/room/${hotelId}`)}>
             {t('common.cancel')}
           </Button>
           <Button type="submit" disabled={!formik.dirty || formik.isSubmitting}>

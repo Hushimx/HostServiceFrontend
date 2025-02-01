@@ -29,7 +29,7 @@ const EditDriverPage: React.FC = () => {
 
   const validationSchema = Yup.object().shape({
     name: Yup.string()
-      .min(2, t("validation_min_length"))
+      .min(2, t("common.validation.min", { min: 2 }))
       .required(t("common.validation.required")),
     phoneNo: Yup.string()
       .min(9, t("validation_phone_valid"))

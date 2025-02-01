@@ -213,7 +213,7 @@ export default function AppSidebar({user,navItems,role,logout}) {
                 <DropdownMenuSeparator />
                 <DropdownMenuItem onClick={logout}>
                   <LogOut />
-                  {t("logout")}
+                  {t("nav.logout")}
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>

@@ -15,6 +15,7 @@ import Error from "@/components/ui/error";
 import { useLanguage } from "@/contexts/LanguageContext";
 import {  Permission } from "@/lib/rbac";
 import { useVendorAuth } from "@/contexts/vendorAuthContext";
+import { getImageUrl } from "@/lib/utils";
 
 const EditProductPage: React.FC = () => {
   const { storeId,id } = useParams();
@@ -28,7 +29,7 @@ const EditProductPage: React.FC = () => {
 
   const validationSchema = Yup.object().shape({
     name: Yup.string()
-      .min(2, t("validation_min_length"))
+      .min(2, t("common.validation.min", { min: 2 }))
       .required(t("common.validation.required")),
     price: Yup.number().required(t("common.validation.required")).min(1, t("common.validation.required")),
   });
@@ -144,12 +145,12 @@ const EditProductPage: React.FC = () => {
 
         {/* Logo */}
         <div>
-          <label>{t("store.store_image")}</label>
+          <label>{t("products.table.product_photo")}</label>
           <ImageUpload
             value={
               isImageTouched && formik.values.image instanceof File
                 ? URL.createObjectURL(formik.values.image)
-                : originalData.imageUrl
+                : getImageUrl(originalData.image)
             }
             onChange={(file) => {
               formik.setFieldValue("image", file);
@@ -163,7 +164,8 @@ const EditProductPage: React.FC = () => {
         <div className="flex justify-end gap-2">
           <Button
             variant="outline"
-            onClick={() => router.push("/vendor/product/${storeId}")}
+            type="button"
+            onClick={() => router.push(`/vendor/product/${storeId}`)}
           >
             {t("common.cancel")}
           </Button>
