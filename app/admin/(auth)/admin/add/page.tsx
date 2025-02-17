@@ -123,8 +123,8 @@ const AddAdminPage: React.FC = () => {
                   <SelectValue placeholder={t('common.placeholders.role')} />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="SUPER_ADMIN">{t('super_admin')}</SelectItem>
-                  <SelectItem value="REGIONAL_ADMIN">{t('regional_admin')}</SelectItem>
+              <SelectItem value="SUPER_ADMIN">{t("roles.SUPER_ADMIN")}</SelectItem>
+              <SelectItem value="REGIONAL_ADMIN">{t("roles.REGIONAL_ADMIN")}</SelectItem>
                 </SelectContent>
               </Select>
               {touched.role && errors.role && (
