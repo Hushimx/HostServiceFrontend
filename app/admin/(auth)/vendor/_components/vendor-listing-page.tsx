@@ -24,11 +24,6 @@ import { useDashboardAuth } from "@/contexts/AdminAuthContext";
 import { userAgent } from "next/server";
 import { useLanguage } from "@/contexts/LanguageContext";
 
-const filterColumns = [
-  { id: "name" },
-  { id: "email" },
-  { id: "phoneNo",label:"Phone Number" },
-];
 
 export default function EmployeeListingPage() {
   const searchParams = useSearchParams();
@@ -50,6 +45,13 @@ export default function EmployeeListingPage() {
   const {role,user} = useDashboardAuth()
   const { t } = useLanguage()
   const columns = getColumns(t,setRefresh);
+
+  const filterColumns = [
+    { id: "name",label:t("common.name") },
+    { id: "email",label:t("common.email") },
+    { id: "phoneNo",label:t("common.phone") },
+  ];
+  
 
   useEffect(() => {
     const fetchData = async () => {

@@ -26,7 +26,7 @@ export default function CombinedServicesAndDelivery() {
       image:
         "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=800&auto=format&fit=crop",
       alt: "طلبات المطعم",
-      link: "/client/delivery/resturants",
+      link: "/client/delivery/restaurants",
     },
     {
       title: "بقالة",
@@ -34,7 +34,7 @@ export default function CombinedServicesAndDelivery() {
       image:
         "https://images.unsplash.com/photo-1488459716781-31db52582fe9?q=80&w=800&auto=format&fit=crop",
       alt: "بقالة",
-      link: "/services/grocery",
+      link: "/services/groceries",
     },
     {
       title: "صيدلية",
@@ -42,7 +42,7 @@ export default function CombinedServicesAndDelivery() {
       image:
         "https://plus.unsplash.com/premium_photo-1661776050248-bf49f31df5c7?q=80&w=800&auto=format&fit=crop",
       alt: "صيدلية",
-      link: "/services/pharmacy",
+      link: "/services/pharmacies",
     },
   ];
 

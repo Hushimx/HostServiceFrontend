@@ -28,7 +28,7 @@ export default function FooterNav() {
     <>
       {isMobile && (
         <nav
-          style={{ backgroundColor: "#8600ffa1" }}
+          style={{ backgroundColor: "#00000070", backdropFilter: "blur(18px)" }}
           className="fixed rounded-t-md bottom-0 left-0 right-0 text-white flex justify-evenly items-center py-3 shadow-lg z-10"
         >
           {/* Home Button */}

@@ -194,17 +194,6 @@ const EditStorePage: React.FC = () => {
 
 
 
-        {/* Section */}
-        <div>
-          <label>{t("store.header.section")}</label>
-          <SectionSelect
-            value={+formik.values.sectionId}
-            onChange={(sectionId) => formik.setFieldValue("sectionId", sectionId)}
-          />
-          {formik.touched.sectionId && formik.errors.sectionId && (
-            <p className="text-sm text-red-500">{formik.errors.sectionId}</p>
-          )}
-        </div>
 
         {/* Logo */}
         <div>

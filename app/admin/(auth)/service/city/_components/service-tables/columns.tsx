@@ -20,7 +20,7 @@ export const getColumns = (t, setRefresh) => [
   },
   {
     accessorKey: "vendor.name",
-    header: t("common.city"), // Translated "Description"
+    header: t("vendors.table.vendor"), // Translated "Description"
     enableSorting: false,
   },
 

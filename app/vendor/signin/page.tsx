@@ -78,7 +78,7 @@ const LoginForm = () => {
         <div className="w-full max-w-md p-8 bg-white bg-opacity-90 text-gray-900 rounded-lg shadow-2xl">
 
           {/* Vendor Title */}
-          <h1 className="text-3xl font-bold text-center mb-6">
+          <h1 className="text-3xl font-bold text-center text-purple-700 mb-6">
             {t("login.vendor.login_heading")}
           </h1>
           <p className="text-center text-gray-600 mb-6">

@@ -1,9 +1,9 @@
 "use client";
 
-import Loading from "@/app/client/checkin/[roomId]/loading";
 import NotFound from "@/app/not-found";
 import { StoreGrid } from "@/components/client/store/storesGrid";
 import Error from "@/components/ui/error";
+import Loading from "@/components/ui/loading";
 import { useClientAuth } from "@/contexts/ClientAuthContext";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { useEffect, useState } from "react";
@@ -65,7 +65,7 @@ export default function AllStoresPage({ params }: { params: { section?: string }
     return <Error />;
   }
 
-  if (!stores || stores.length === 0 && !loading) {
+  if (!stores && !loading) {
     return <NotFound />;
   }
 

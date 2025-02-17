@@ -9,10 +9,12 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { fetchFromNest } from "@/hooks/useFetch";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 interface Section {
   id: number;
   name: string;
+  name_ar: string;
 }
 
 interface SectionSelectProps {
@@ -27,7 +29,7 @@ interface SectionSelectProps {
     const [sections, setSections] = useState<Section[]>([]);
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
-
+    const { t,language } = useLanguage();
     // Fetch all global sections once
     useEffect(() => {
       const fetchSections = async () => {
@@ -65,7 +67,7 @@ interface SectionSelectProps {
         )}
         {isLoading && (
           <p className="text-gray-500 text-sm">
-            Loading Services...
+            {t("common.loading")}
           </p>
         )}
 
@@ -75,14 +77,14 @@ interface SectionSelectProps {
           disabled={isLoading || !!error}
         >
           <SelectTrigger className="w-[200px]">
-            <SelectValue placeholder="Select a Section" />
+            <SelectValue placeholder={t("sections.selector.title")} />
           </SelectTrigger>
           <SelectContent>
             {/* Allow clearing the selection */}
-            <SelectItem value="">None</SelectItem>
+            <SelectItem value="">{t("common.none")}</SelectItem>
             {sections.map((section) => (
               <SelectItem key={section.id} value={String(section.id)}>
-                {section.name}
+                {language == "ar" && section.name_ar ? section.name_ar : section.name}
               </SelectItem>
             ))}
           </SelectContent>

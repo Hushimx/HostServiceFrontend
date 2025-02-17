@@ -26,9 +26,7 @@ import { SectionSelect } from "@/components/ui/sectionSelect";
  * Example filter columns for your FilterPopover. 
  * Adjust as needed to match your store fields (e.g., "ownerId", "approved", etc.).
  */
-const filterColumns = [
-  { id: "title", label: "Title" },
-];
+
 
 export default function StoresListingPage() {
   // Grab query params from the URL
@@ -53,6 +51,10 @@ export default function StoresListingPage() {
 
   // Define columns (similar to getColumns for products)
   const columns = getStoreColumns(t, setRefresh);
+
+  const filterColumns = [
+    { id: "title", label: t("common.title"), },
+  ];
 
   // Fetch data on mount or when dependencies change
   useEffect(() => {

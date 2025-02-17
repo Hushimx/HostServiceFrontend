@@ -33,11 +33,10 @@ export const FilterPopover: React.FC<FilterPopoverProps> = ({
 }) => {
   const { getQueryParams, updateQueryParams, clearQueryParams } =
   useQueryParams();
-  const { t } = useLanguage()
+  const { t,language } = useLanguage()
   const [localFilters, setLocalFilters] = useState<Record<string, string>>(
     getQueryParams() || {}
   );
-
   const handleInputChange = (columnId: string, value: string) => {
     setLocalFilters((prev) => ({
       ...prev,
@@ -66,11 +65,11 @@ export const FilterPopover: React.FC<FilterPopoverProps> = ({
     <Popover>
       <PopoverTrigger asChild>
         <div className="relative">
-          <span className="w-5 h-5 text-center rounded-full bg-purple-700 text-white absolute -top-3 right-0">{Object.keys(getQueryParams()).length}</span>
+          <span className="w-5 h-5 text-center rounded-full bg-purple-700 p-3 flex justify-center items-center text-white absolute -top-4 right-0">{Object.keys(getQueryParams()).length}</span>
         <Button variant="outline">{t("filters.trigger")}</Button>
         </div>
       </PopoverTrigger>
-      <PopoverContent className="max-h-96 overflow-y-auto w-80">
+      <PopoverContent className="max-h-96 overflow-y-auto w-80 " style={{direction: `${language === 'ar' ? 'rtl' : 'ltr'}`}}>
         <div className="p-4">
           {filterColumns.map(({ id: columnId,label, type, options }) => (
             <div key={columnId} className="mb-4">

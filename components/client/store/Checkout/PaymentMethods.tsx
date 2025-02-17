@@ -12,7 +12,7 @@ export default function PaymentMethods({selectedPayment, setSelectedPayment}) {
 
   return (
     <div className="bg-white shadow-lg rounded-lg p-6 space-y-4">
-      <h2 className="text-xl font-bold text-gray-800">{t("select_payment_method")}</h2>
+      <h2 className="text-xl font-bold text-gray-800">{t("checkout.select_payment_method")}</h2>
       <div className="space-y-3">
         {paymentMethods.map((method) => (
           <label

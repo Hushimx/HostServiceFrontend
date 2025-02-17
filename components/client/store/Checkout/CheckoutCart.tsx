@@ -4,6 +4,8 @@ import { CartItem } from "@/types/store";
 import { FaceFrownIcon } from "@heroicons/react/24/outline";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { useClientAuth } from "@/contexts/ClientAuthContext";
+import { get } from "http";
+import { getImageUrl } from "@/lib/utils";
 
 interface CartContentProps {
   cart: CartItem[];
@@ -23,11 +25,11 @@ export default function CartContent({
   const currency = user?.currencySign; // Default to USD if no currency is provided
   return (
     <div className="bg-white shadow-lg rounded-lg p-6 space-y-6">
-      <h1 className="text-xl font-bold text-gray-800">{t("your_cart")}</h1>
+      <h1 className="text-xl font-bold text-gray-800">{t("checkout.your_cart")}</h1>
       {cart.length === 0 ? (
         <div className="text-center text-gray-600">
           <FaceFrownIcon className="w-16 h-16 mx-auto text-gray-400 mb-4" />
-          <p className="text-lg font-medium">{t("your_cart_is_empty")}</p>
+          <p className="text-lg font-medium">{t("checkout.emptyCart")}</p>
         </div>
       ) : (
         <>
@@ -39,7 +41,7 @@ export default function CartContent({
               >
                 {/* Product Image */}
                 <img
-                  src={item.image || "/placeholder.png"}
+                  src={getImageUrl(item.image)}
                   alt={item.name}
                   className="w-16 h-16 object-cover rounded-lg"
                 />
@@ -72,7 +74,7 @@ export default function CartContent({
                   onClick={() => onRemoveFromCart(item.id)}
                   className="text-red-600 hover:text-red-700 bg-gray-100 px-3 py-1 rounded-lg ml-4"
                 >
-                  {t("remove")}
+                  {t("checkout.remove")}
                 </button>
               </li>
             ))}
@@ -81,7 +83,7 @@ export default function CartContent({
           {/* Total Section */}
           <div className="border-t pt-4">
             <div className="flex justify-between items-center">
-              <h2 className="text-lg font-bold text-gray-900">{t("total")}</h2>
+              <h2 className="text-lg font-bold text-gray-900">{t("checkout.total")}</h2>
               <p className="text-lg font-bold text-purple-600">{currency} {total.toFixed(2)}</p>
             </div>
           </div>

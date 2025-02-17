@@ -21,7 +21,7 @@ export default function ProductListingPage() {
   const { storeId } = useParams();
   const page = Number(searchParams.get("page")) || 1;
   const limit = Number(searchParams.get("limit")) || 10;
-  const name = searchParams.get("common.name");
+  const name = searchParams.get("name");
 
   const { t } = useLanguage();
   const [products, setProducts] = useState<any[]>([]);

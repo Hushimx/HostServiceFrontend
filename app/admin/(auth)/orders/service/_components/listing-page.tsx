@@ -19,22 +19,7 @@ import { useDashboardAuth } from "@/contexts/AdminAuthContext";
 import { useLanguage } from "@/contexts/LanguageContext";
 import withPermission from "@/components/providers/withRoles";
 
-const filterColumns = [
-  {
-    id: "status",
-    type: "select",
-    options: [
-      { label: "Pending", value: "PENDING" },
-      { label: "Pickup", value: "PICKUP" },
-      { label: "In Progress", value: "IN_PROGRESS" },
-      { label: "Completed", value: "COMPLETED" },
-      { label: "Canceled", value: "CANCELED" },
-    ],
-  },
-  { id: "hotelName", label: "Hotel Name", type: "input" },
-  { id: "roomNumber", label: "Room Number", type: "input" },
-  { id: "clientNumber", label: "Phone Number", type: "input" },
-];
+
 
  function OrdersListingPage() {
   const searchParams = useSearchParams();
@@ -62,6 +47,24 @@ const filterColumns = [
   const [meta, setMeta] = useState({ currentPage: page, lastPage: 1 });
 
   const columns = getColumns(t, setRefresh);
+
+  const filterColumns = [
+    {
+      id: "status",
+      label: t("common.status"),
+      type: "select",
+      options: [
+        { label: t("status.PENDING"), value: "PENDING" },
+        { label: t("status.PICKUP"), value: "PICKUP" },
+        { label: t("status.IN_PROGRESS"), value: "IN_PROGRESS" },
+        { label: t("status.COMPLETED"), value: "COMPLETED" },
+        { label: t("status.CANCELED"), value: "CANCELED" },
+      ],
+    },
+    { id: "hotelName", label: t("common.hotel_name"), type: "input" },
+    { id: "roomNumber", label: t("common.room_number"), type: "input" },
+    { id: "clientNumber", label: t("common.phone"), type: "input" },
+  ];
 
   useEffect(() => {
     const fetchData = async () => {

@@ -78,7 +78,7 @@ export const SectionSelect: React.FC<SectionSelectProps> = memo(
           disabled={isLoading || !!error}
         >
           <SelectTrigger className="w-[200px]">
-            <SelectValue placeholder="Select a Section" />
+            <SelectValue placeholder={t("store.header.section")} />
           </SelectTrigger>
           <SelectContent>
             {/* Allow clearing the selection */}

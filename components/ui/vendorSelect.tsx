@@ -6,6 +6,8 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Check, ChevronsUpDown } from "lucide-react";
 import { fetchFromNest } from "@/hooks/useFetch";
+import { t, T } from "@faker-js/faker/dist/airline-C5Qwd7_q";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 interface Vendor {
   id: number;
@@ -29,7 +31,7 @@ export const VendorSelect: React.FC<VendorSelectProps> = ({
   const [error, setError] = useState<string | null>(null);
   const [searchQuery, setSearchQuery] = useState("");
   const [open, setOpen] = useState(false);
-
+  const { t } = useLanguage();
   // Fetch vendors when the city changes
   useEffect(() => {
     if (!city) {
@@ -83,8 +85,8 @@ export const VendorSelect: React.FC<VendorSelectProps> = ({
               disabled={!city}
             >
               {value
-                ? vendors.find((vendor) => vendor.id === value)?.name || "Select a vendor"
-                : "Select a vendor"}
+                ? vendors.find((vendor) => vendor.id === value)?.name || t("vendors.selector.select")
+                : t("vendors.selector.select")}
               <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
             </Button>
           </PopoverTrigger>
@@ -92,7 +94,7 @@ export const VendorSelect: React.FC<VendorSelectProps> = ({
             {/* Search Input */}
             <div className="p-2">
               <Input
-                placeholder="Search vendors..."
+                placeholder={t("common.search")}
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
               />
@@ -100,9 +102,9 @@ export const VendorSelect: React.FC<VendorSelectProps> = ({
             {/* Dropdown Items */}
             <div className="max-h-60 overflow-y-auto">
               {isLoading ? (
-                <div className="p-2 text-sm text-gray-500">Loading...</div>
+                <div className="p-2 text-sm text-gray-500">{t("common.loading")}</div>
               ) : filteredVendors.length === 0 ? (
-                <div className="p-2 text-sm text-gray-500">No vendors found</div>
+                <div className="p-2 text-sm text-gray-500">{t("vendors.selector.noVendors")}</div>
               ) : (
                 filteredVendors.map((vendor) => (
                   <div

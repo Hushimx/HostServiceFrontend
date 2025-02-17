@@ -5,21 +5,14 @@ import { useRouter, useParams } from "next/navigation";
 import * as Yup from "yup";
 import { useFormik } from "formik";
 import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
-import { CountrySelect } from "@/components/ui/countrySelector";
-import { CitySelect } from "@/components/ui/citySelector";
-import { VendorSelect } from "@/components/ui/vendorSelect";
-import { SectionSelect } from "@/components/ui/sectionSelect";
 import { ImageUpload } from "@/components/ui/imageUpload";
 import { fetchFromNest } from "@/hooks/useFetch";
 import Loading from "@/components/ui/loading";
 import Error from "@/components/ui/error";
 import { useLanguage } from "@/contexts/LanguageContext";
-import { hasPermission, Permission } from "@/lib/rbac";
 import { useDashboardAuth } from "@/contexts/AdminAuthContext";
-import { get } from "http";
 import { getImageUrl } from "@/lib/utils";
 
 const EditStorePage: React.FC = () => {
@@ -100,7 +93,7 @@ const EditStorePage: React.FC = () => {
           method: "PATCH",
           body: formData,
         });
-        toast.success(t("errors.update"));
+        toast.success(t("success.update"));
         // router.push("/admin/stores");
       } catch (err) {
         toast.error(t("errors.somethingWentWrong"));

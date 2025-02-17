@@ -87,7 +87,7 @@
         "description_ar": "أدخل الوصف باللغة العربية",
         "event_title": "أدخل إسم الفعالية",
         "event_description": "أدخل وصف الفعالية",
-        "service_slug": "www.example.com/design-services",
+        "service_slug": "cleaning",
         "service_description": "أدخل وصف الخدمة",
         "select_driver": "اختيار سائق"
       },
@@ -259,6 +259,7 @@
       }
     },
     "store": {
+      "no_stores": "لا يوجد متاجر",
       "table": {
         "title": "قائمة المتاجر",
         "manage_stores": "إدارة المتاجر"
@@ -324,6 +325,9 @@
     "checkout": {
       "title": "إتمام الطلب",
       "sucess": "تم تنفيذ الطلب بنجاح",
+      "remove": "حذف",
+      "your_cart": "سلة المنتجات",
+      "select_payment_method": "حدد طريقة الدفع",
       "orders_success_message": "تم ارسال طلبك وسيتم التواصل معك قريباً",
       "total": "المجموع",
       "confirmPurchase": "تأكيد الشراء",
@@ -342,6 +346,7 @@
       "error_generic": "حدث خطأ أثناء معالجة الطلب.",  
       "table": {
         "name": "إسم الخدمة",
+        "name_ar": "اسم الخدمة بالعربي",
         "title": "قائمة الخدمات",
         "manage_services": "إضافة خدمات",
         "slug": "معرف الخدمه",
@@ -389,7 +394,12 @@
       },
       "edit": {
         "title": "تعديل بيانات المورد"
-      }
+      },
+      "selector":{
+        "select": "اختار مورد",
+        "noVendors": "لا يوجد موردين"
+
+    }
     },
     "countrys": {
       "table": {
@@ -415,6 +425,12 @@
       },
       "edit": {
         "title": "تعديل بيانات الغرفة"
+      }
+    },
+    "sections": {
+      "selector": {
+        "title": "اختار قسم",
+        "noSections": "لا يوجد اقسام"
       }
     },
     "products": {
@@ -510,33 +526,6 @@
       "Cities": "المدن"
 
 
-    },
-    "landing": {
-      "video_not_supported": "متصفحك لا يدعم تشغيل الفيديو.",
-      "welcome": "مرحبًا بكم في هوست",
-      "subtitle": "خدمات الضيافة الفندقية والسياحية لتجربة نزلاء فريدة.",
-      "services_title": "خدماتنا",
-      "restaurant_orders": "طلبات المطعم",
-      "restaurant_description": "تشكيلة متنوعة من الأطعمة والوجبات.",
-      "pharmacy": "صيدلية",
-      "pharmacy_description": "توفير الأدوية ومستحضرات العناية.",
-      "laundry": "مغسلة ملابس",
-      "laundry_description": "خدمة غسيل وكي الملابس للنزلاء.",
-      "market": "ماركت",
-      "market_description": "توفير احتياجات النزلاء من الأغذية.",
-      "about_title": "من نحن",
-      "about_description": "برنامج هوست هو...",
-      "about_alt": "من نحن",
-      "join_us_title": "انضم إلينا",
-      "driver": "سائق",
-      "driver_description": "انضم إلينا كسائق...",
-      "vendor": "بائع",
-      "vendor_description": "كن شريكًا...",
-      "coming_soon": "قريبًا",
-      "contact_title": "تواصل معنا",
-      "whatsapp": "واتساب",
-      "footer_rights": "برنامج هوست. جميع الحقوق محفوظة.",
-      "contact_us": "تواصل معنا"
     }
   
   }

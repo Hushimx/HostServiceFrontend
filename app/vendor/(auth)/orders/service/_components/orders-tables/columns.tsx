@@ -20,16 +20,7 @@ export const getColumns = (t, setRefresh) => [
     header: t("common.phone"), // Translated "Phone Number"
     enableSorting: true,
   },
-  {
-    accessorKey: "hotelName",
-    header: t("hotels.table.name"), // Translated "Hotel Name"
-    enableSorting: true,
-  },
-  {
-    accessorKey: "roomNumber",
-    header: t("common.room_number"), // Translated "Hotel Name"
-    enableSorting: true,
-  },
+
 
   {
     accessorKey: "status",

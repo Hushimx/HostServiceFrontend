@@ -11,11 +11,13 @@ import { CountrySelect } from '@/components/ui/countrySelector';
 import { CitySelect } from '@/components/ui/citySelector';
 import { fetchFromNest } from '@/hooks/useFetch';
 import { useLanguage } from '@/contexts/LanguageContext';
+import { hasPermission, Permission } from '@/lib/rbac';
+import { useDashboardAuth } from '@/contexts/AdminAuthContext';
 
 const AddDriverPage: React.FC = () => {
   const router = useRouter();
   const { t } = useLanguage();
-
+  const { user, role } = useDashboardAuth();
   const [selectedCountry, setSelectedCountry] = useState<number | null>(null);
 
   const initialValues = {
@@ -26,10 +28,10 @@ const AddDriverPage: React.FC = () => {
 
   const validationSchema = Yup.object().shape({
     name: Yup.string()
-      .min(2, t('validation_name_min'))
+      .min(2, t('common.validation.min', { min: 2 }))
       .required(t('common.validation.required')),
     phoneNo: Yup.string()
-      .min(9, t('validation_phone_valid'))
+      .min(9, t('common.validation.min', { min: 9 }))
       .required(t('common.validation.required')),
     cityId: Yup.number()
       .nullable()
@@ -101,23 +103,23 @@ const AddDriverPage: React.FC = () => {
             </div>
 
             <div>
-              <label className="block text-sm font-medium">{t('common.country')}</label>
-              <CountrySelect
+              <label>{t("common.country")}</label>
+             {hasPermission(role, Permission.ACCESS_ALL_HOTELS) && <CountrySelect
                 selectedCountry={selectedCountry}
                 onCountryChange={(countryId) => {
                   setSelectedCountry(countryId);
-                  setFieldValue('cityId', null); // Reset city when country changes
+                  setFieldValue("cityId", null);
                 }}
-              />
+              />} 
             </div>
 
+            {/* City */}
             <div>
-              <label className="block text-sm font-medium">{t('common.city')}</label>
+              <label>{t("common.city")}</label>
               <CitySelect
-                countryId={selectedCountry}
-                initialValue={values.cityId}
-                onCityChange={(value) => setFieldValue('cityId', value)}
-              />
+                countryId={selectedCountry || +user.countryId}
+                initialValue={+values.cityId}
+                onCityChange={(cityId) => setFieldValue("cityId", cityId)}             />
               {touched.cityId && errors.cityId && (
                 <p className="text-sm text-red-500">{t(errors.cityId)}</p>
               )}

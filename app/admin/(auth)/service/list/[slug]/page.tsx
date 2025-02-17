@@ -24,6 +24,7 @@ const EditServicePage: React.FC = () => {
 
   const EditServiceSchema = Yup.object().shape({
     name: Yup.string().min(2, t('common.validation.min', { min: 2 })).required(t('common.validation.required')),
+    name_ar: Yup.string().min(2, t('common.validation.min', { min: 2 })).required(t('common.validation.required')),
     description: Yup.string().required(t('common.validation.required')),
   });
 
@@ -35,6 +36,7 @@ const EditServicePage: React.FC = () => {
         setOriginalData(service);
         formik.setValues({
           name: service.name,
+          name_ar: service.name_ar,
           description: service.description,
         }, false);
       } catch (err) {
@@ -51,6 +53,7 @@ const EditServicePage: React.FC = () => {
   const formik = useFormik({
     initialValues: {
       name: '',
+      name_ar: '',
       description: '',
     },
     validationSchema: EditServiceSchema,
@@ -98,6 +101,18 @@ const EditServicePage: React.FC = () => {
           />
           {formik.errors.name && formik.touched.name && (
             <p className="text-sm text-red-500">{formik.errors.name}</p>
+          )}
+        </div>
+        <div>
+          <label className="block text-sm font-medium">{t('services.table.name_ar')}</label>
+          <Input
+            name="name_ar"
+            value={formik.values.name_ar}
+            onChange={formik.handleChange}
+            placeholder={t('common.placeholders.name')}
+          />
+          {formik.errors.name_ar && formik.touched.name_ar && (
+            <p className="text-sm text-red-500">{formik.errors.name_ar}</p>
           )}
         </div>
         <div>

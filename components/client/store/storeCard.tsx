@@ -26,7 +26,7 @@ export function StoreCard({
 
   
           {/* Store Logo */}
-          <div className="absolute -bottom-6 left-4">
+          <div className="absolute -bottom-6 mx-5">
             <img
               src={getImageUrl(store.image)}
               alt={`${store.name} logo`}

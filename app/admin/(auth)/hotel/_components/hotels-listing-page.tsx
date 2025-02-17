@@ -21,10 +21,6 @@ import { CitySelect } from "@/components/ui/citySelector";
 import { hasPermission, Permission } from "@/lib/rbac";
 import { useDashboardAuth } from "@/contexts/AdminAuthContext";
 
-const filterColumns = [
-  { id: "name" },
-];
-
 export default function HotelListingPage() {
   const searchParams = useSearchParams();
   const page = Number(searchParams.get("page")) || 1;
@@ -43,6 +39,12 @@ export default function HotelListingPage() {
   const [error, setError] = useState(null);
   const [meta, setMeta] = useState({ currentPage: page, lastPage: 1 });
   const columns = getColumns(t,setRefresh);
+
+  
+const filterColumns = [
+  { id: "name", label: t("common.name") },
+];
+
 
   useEffect(() => {
     const fetchData = async () => {

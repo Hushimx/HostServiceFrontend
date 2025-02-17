@@ -17,6 +17,7 @@ const AddServicePage: React.FC = () => {
 
   const initialValues = {
     name: '',
+    name_ar: '',
     slug: '',
     description: '',
   };
@@ -25,11 +26,13 @@ const AddServicePage: React.FC = () => {
     name: Yup.string()
       .min(2, t('validation_name_min'))
       .required(t('common.validation.required')),
+   name_ar: Yup.string()
+      .min(2, t('validation_name_min'))
+      .required(t('common.validation.required')),
     slug: Yup.string()
       .matches(/^[a-z0-9-]+$/, t('validation_slug_invalid'))
       .required(t('common.validation.required')),
     description: Yup.string()
-      .min(10, t('common.validation.min', { min: 10 }))
       .required(t('common.validation.required')),
   });
 
@@ -77,9 +80,20 @@ const AddServicePage: React.FC = () => {
                 <p className="text-sm text-red-500">{t(errors.name)}</p>
               )}
             </div>
+            <div>
+              <label className="block text-sm font-medium">{t('services.table.name_ar')}</label>
+              <Field
+                name="name_ar"
+                as={Input}
+                placeholder={t('common.placeholders.name')}
+              />
+              {touched.name_ar && errors.name_ar && (
+                <p className="text-sm text-red-500">{t(errors.name_ar)}</p>
+              )}
+            </div>
 
             <div>
-              <label className="block text-sm font-medium">{t('service_slug')}</label>
+              <label className="block text-sm font-medium">{t('services.table.slug')}</label>
               <Field
                 name="slug"
                 as={Input}

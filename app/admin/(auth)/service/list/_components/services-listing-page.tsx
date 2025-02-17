@@ -17,16 +17,13 @@ import { cn } from "@/lib/utils";
 import { useQueryParams } from "@/hooks/use-queryParams";
 import { FilterPopover } from "@/components/filterPopover";
 
-const filterColumns = [
-  { id: "name", label: "Service Name" },
-  { id: "slug", label: "Slug" },
-];
+
 
 export default function ServicesListingPage() {
   const searchParams = useSearchParams();
   const page = Number(searchParams.get("page")) || 1;
   const limit = Number(searchParams.get("limit")) || 10;
-  const name = searchParams.get("common.name");
+  const name = searchParams.get("name");
   const slug = searchParams.get("slug");
   const { t } = useLanguage();
   const { updateQueryParams } = useQueryParams();
@@ -38,6 +35,11 @@ export default function ServicesListingPage() {
   const [error, setError] = useState(null);
   const [meta, setMeta] = useState({ currentPage: page, lastPage: 1 });
   const columns = getColumns(t,setRefresh);
+
+  const filterColumns = [
+    { id: "name", label: t("common.name") },
+    { id: "slug", label: t("services.table.slug") },
+  ];
 
   useEffect(() => {
     const fetchData = async () => {

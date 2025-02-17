@@ -94,7 +94,7 @@ const EditProductPage: React.FC = () => {
           method: "PATCH",
           body: formData,
         });
-        toast.success(t("errors.update"));
+        toast.success(t("success.update"));
         // router.push("/vendor/stores");
       } catch (err) {
         toast.error(t("errors.somethingWentWrong"));

@@ -18,23 +18,9 @@ import { hasPermission, Permission } from "@/lib/rbac";
 import { useDashboardAuth } from "@/contexts/AdminAuthContext";
 import { useLanguage } from "@/contexts/LanguageContext";
 import withPermission from "@/components/providers/withRoles";
+import { l } from "nuqs/dist/serializer-D6QaciYt";
 
-const filterColumns = [
-  {
-    id: "status",
-    type: "select",
-    options: [
-      { label: "Pending", value: "PENDING" },
-      { label: "Pickup", value: "PICKUP" },
-      { label: "On Way", value: "ON_WAY" },
-      { label: "Completed", value: "COMPLETED" },
-      { label: "Canceled", value: "CANCELED" },
-    ],
-  },
-  { id: "hotelName", label: "Hotel Name", type: "input" },
-  { id: "roomNumber", label: "Room Number", type: "input" },
-  { id: "phoneNo", label: "Phone Number", type: "input" },
-];
+
 
  function OrdersListingPage() {
   const searchParams = useSearchParams();
@@ -45,7 +31,7 @@ const filterColumns = [
     status,
     clientName,
     hotelName,
-    phoneNo,
+    clientNumber,
     country,
     city,
     roomNumber,
@@ -63,6 +49,24 @@ const filterColumns = [
 
   const columns = getColumns(t, setRefresh);
 
+  const filterColumns = [
+    {
+      id: "status",
+      label: t("common.status"),
+      type: "select",
+      options: [
+        { label: t("status.PENDING"), value: "PENDING" },
+        { label: t("status.PICKUP"), value: "PICKUP" },
+        { label: t("status.ON_WAY"), value: "ON_WAY" },
+        { label: t("status.COMPLETED"), value: "COMPLETED" },
+        { label: t("status.CANCELED"), value: "CANCELED" },
+      ],
+    },
+    { id: "hotelName", label: t("common.hotel_name"), type: "input" },
+    { id: "roomNumber", label: t("common.room_number"), type: "input" },
+    { id: "clientNumber", label: t("common.phone"), type: "input" },
+  ];
+
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true);
@@ -75,7 +79,7 @@ const filterColumns = [
             status,
             clientName,
             hotelName,
-            phoneNo,
+            clientNumber,
             country,
             city,
             roomNumber,
@@ -103,7 +107,7 @@ const filterColumns = [
     status,
     clientName,
     hotelName,
-    phoneNo,
+    clientNumber,
     country,
     city,
     roomNumber,

@@ -22,15 +22,16 @@ import { hasPermission, Permission } from "@/lib/rbac";
 import { useDashboardAuth } from "@/contexts/AdminAuthContext";
 
 const filterColumns = [
-  { id: "name" },
+  { id: "name", label: "Name" },
+  { id: "phoneNo", label: "Phone Number" },
 ];
 
 export default function ClientListingPage() {
   const searchParams = useSearchParams();
   const page = Number(searchParams.get("page")) || 1;
   const limit = Number(searchParams.get("limit")) || 10;
-  const name = searchParams.get("common.name");
-  const city = searchParams.get("city");
+  const name = searchParams.get("name");
+  const phoneNo = searchParams.get("phoneNo");
   const country = searchParams.get("country");
   const { t } = useLanguage();
   const { updateQueryParams } = useQueryParams();
@@ -54,6 +55,7 @@ export default function ClientListingPage() {
           limit,
           filters: {
             name,
+            phoneNo,
             country,
           },
         };
@@ -67,14 +69,14 @@ export default function ClientListingPage() {
         });
       } catch (err) {
         console.error("Error fetching clients:", err);
-        setError(t("errors.fetch_clients"));
+        setError(t("errors.fetch"));
       } finally {
         setLoading(false);
       }
     };
 
     fetchData();
-  }, [page, limit, name, city, country,refresh]);
+  }, [page, limit, name,phoneNo, country,refresh]);
 
   const handlePageChange = (newPage) => {
     updateQueryParams({ page: newPage.toString() });
@@ -121,7 +123,7 @@ export default function ClientListingPage() {
           </div>
         ) : (
           <>
-            <DataTable columns={columns} data={clients}   setRefresh={setRefresh}  />
+            <DataTable columns={columns} data={clients}   />
             <Pagination
               currentPage={meta.currentPage}
               totalPages={meta.lastPage}

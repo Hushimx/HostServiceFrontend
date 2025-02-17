@@ -2,29 +2,32 @@
 
 import React, { useState, useEffect } from "react";
 import SuccessDrawer from "@/components/client/store/Checkout/success";
-import { useClientAuth } from "@/contexts/ClientAuthContext";
 import { useLanguage } from "@/contexts/LanguageContext";
 import Error from "@/components/ui/error";
 import NotFound from "@/app/not-found";
 import { Textarea } from "@/components/ui/textarea";
 import "react-quill/dist/quill.snow.css"; // Import Quill styles
 import { Input } from "@/components/ui/input";
+import { Link } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import Loading from "@/components/ui/loading";
 
 export default function ServicePage({ slug }: { slug: string }) {
   const [service, setService] = useState<{
     serviceName: string;
+    serviceNameAr: string;
     description: string;
     vendor: {
       description: string;
       description_ar: string;
     };
   } | null>(null);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const [isOrderSuccess, setIsOrderSuccess] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  const [orderId, setOrderId] = useState<string | null>(null);
   const [notes, setNotes] = useState("");
-  const { user } = useClientAuth();
+
   const { t, language } = useLanguage();
 
   // Fetch service details
@@ -85,7 +88,7 @@ export default function ServicePage({ slug }: { slug: string }) {
         handleError(errorData?.code, t("services.error_generic"));
         return;
       }
-
+      console.log(await response.json())
       setIsOrderSuccess(true);
     } catch (error) {
       setErrorMessage(t("service.error_unknown"));
@@ -99,24 +102,24 @@ export default function ServicePage({ slug }: { slug: string }) {
   }, [slug]);
 
   // Render loading state
-  
+  if (isLoading) {
+    return <Loading />;
+  }
   // Render not found page
-  if (errorMessage === "404") {
+  if (errorMessage == "404") {
     return <NotFound />;
   }
 
   // Render error state
-  if (errorMessage && !isLoading) {
-    return <Error message={errorMessage} onRetry={fetchService} />;
-  }
-
+  
   // Render service not found state
   if (!service && !isLoading) {
     return <NotFound />;
   }
-  if (isLoading) {
-    return <Loading />;
+  if (errorMessage && !isLoading) {
+    return <Error message={errorMessage} onRetry={fetchService} />;
   }
+
 
   // Determine description to display
   const displayDescription =
@@ -128,7 +131,9 @@ export default function ServicePage({ slug }: { slug: string }) {
     <div className="min-h-screen flex flex-col items-center justify-start p-4 bg-gray-50">
       <div className="w-full max-w-md bg-white rounded-xl shadow-md p-6 mt-8">
         <h1 className="text-3xl font-bold text-center text-blue-900 mb-2">
-          {service.serviceName}
+          {language === "ar" && service.serviceNameAr
+            ? service.serviceNameAr
+            : service.serviceName}
         </h1>
         {/* Apply Quill styles */}
         <div className="ql-editor text-sm text-gray-800 mt-4">
@@ -152,7 +157,13 @@ export default function ServicePage({ slug }: { slug: string }) {
       </div>
 
       {/* Success Drawer */}
-      <SuccessDrawer isOpen={isOrderSuccess} onClose={() => setIsOrderSuccess(false)}  />
+      <SuccessDrawer isOpen={isOrderSuccess} onClose={() => setIsOrderSuccess(false)}         button={
+          <Link href={`/client/orders/service/${orderId}`}>
+            <Button className="w-full bg-purple-600 hover:bg-purple-700 text-white text-lg py-3 rounded-lg">
+              {t("checkout.viewOrder")}
+            </Button>
+          </Link>
+        }  />
     </div>
   );
 }

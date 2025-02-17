@@ -22,13 +22,13 @@ import dynamic from "next/dynamic";
 const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 import "react-quill/dist/quill.snow.css";
 
-const validationSchema = (t: (key: string) => string) =>
+const validationSchema = (t: (key: string, options?: any) => string) =>
   Yup.object().shape({
     title: Yup.string()
-      .min(3, t("validation_min"))
+      .min(3, t("common.validation.min", { min: 3 }))
       .required(t("common.validation.required")),
       title_ar: Yup.string()
-      .min(3, t("validation_min"))
+      .min(3, t("common.validation.min", { min: 3 }))
       .optional(),
     address: Yup.string().required(t("common.validation.required")),
     locationUrl: Yup.string().url(t("validation_invalid_url")).optional(),
@@ -145,9 +145,9 @@ const validationSchema = (t: (key: string) => string) =>
 
                {/* Location URL */}
             <div>
-              <label>{t("locationUrl")}</label>
+              <label>{t("common.locationUrl")}</label>
               <Field
-                name="common.locationUrl"
+                name="locationUrl"
                 as={Input}
                 placeholder={t("common.placeholders.locationUrl")}
               />

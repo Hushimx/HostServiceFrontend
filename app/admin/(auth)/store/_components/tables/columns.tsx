@@ -59,8 +59,8 @@ export function getStoreColumns(
             <Link
               href={`/admin/product/${store.id}`}
             >
-              <Button className=" text-black">
-                {t("products.table.name")}
+              <Button className=" text-purple-700">
+                {t("products.table.title")}
               </Button>
             </Link>
           </div>

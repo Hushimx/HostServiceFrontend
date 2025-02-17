@@ -35,7 +35,7 @@ export default function StoresListingPage() {
   const searchParams = useSearchParams();
   const page = Number(searchParams.get("page")) || 1;
   const limit = Number(searchParams.get("limit")) || 10;
-  const name = searchParams.get("common.name");
+  const name = searchParams.get("name");
   const section = searchParams.get("section");
   const country = searchParams.get("country");
   const city = searchParams.get("city");

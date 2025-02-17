@@ -32,7 +32,7 @@ const EditDriverPage: React.FC = () => {
       .min(2, t("common.validation.min", { min: 2 }))
       .required(t("common.validation.required")),
     phoneNo: Yup.string()
-      .min(9, t("validation_phone_valid"))
+      .min(9, t("common.validation.phone"))
       .required(t("common.validation.required")),
     cityId: Yup.number().required(t("common.validation.required")),
   });
@@ -64,7 +64,6 @@ const EditDriverPage: React.FC = () => {
           headers: { "Content-Type": "application/json" },
         });
         toast.success(t("success.update"));
-        router.push("/admin/driver");
       } catch (err) {
         if(err.details.code == "WHATSAPP_ERROR"){
           toast.error(t('errors.WHATSAPP_ERROR'));
@@ -138,6 +137,7 @@ const EditDriverPage: React.FC = () => {
           <label className="block text-sm font-medium">{t("common.phone")}</label>
           <Input
             name="phoneNo"
+            
             value={formik.values.phoneNo}
             onChange={formik.handleChange}
             placeholder={t("common.placeholders.phone")}

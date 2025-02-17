@@ -25,16 +25,14 @@ import { useVendorAuth } from "@/contexts/vendorAuthContext";
  * Example filter columns for your FilterPopover. 
  * Adjust as needed to match your store fields (e.g., "ownerId", "approved", etc.).
  */
-const filterColumns = [
-  { id: "name" },
-];
+
 
 export default function StoresListingPage() {
   // Grab query params from the URL
   const searchParams = useSearchParams();
   const page = Number(searchParams.get("page")) || 1;
   const limit = Number(searchParams.get("limit")) || 10;
-  const name = searchParams.get("common.name");
+  const name = searchParams.get("name");
   const section = searchParams.get("section");
   const country = searchParams.get("country");
   const city = searchParams.get("city");
@@ -54,6 +52,10 @@ export default function StoresListingPage() {
 
   // Define columns (similar to getColumns for products)
   const columns = getStoreColumns(t, setRefresh);
+
+  const filterColumns = [
+    { id: "name", label: t("common.name") },
+  ];
 
   // Fetch data on mount or when dependencies change
   useEffect(() => {

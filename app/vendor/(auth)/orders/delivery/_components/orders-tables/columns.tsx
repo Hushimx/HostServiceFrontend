@@ -31,11 +31,6 @@ export const getColumns = (t, setRefresh) => [
     enableSorting: true,
   },
   {
-    accessorKey: "driver",
-    header: t("common.driver_name"), // Translated "Room Number"
-    enableSorting: true,
-  },
-  {
     accessorKey: "status",
     header: t("common.status"), // Translated "Status"
     enableSorting: true,

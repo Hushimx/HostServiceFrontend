@@ -19,17 +19,12 @@ import { FilterPopover } from "@/components/filterPopover";
 import { Permission } from "@/lib/rbac";
 import withPermission from "@/components/providers/withRoles";
 
-const filterColumns = [
-  { id: "name" },
-  { id: "email" },
-  { id: "role" },
-];
 
  function AdminListingPage() {
   const searchParams = useSearchParams();
   const page = Number(searchParams.get("page")) || 1;
   const limit = Number(searchParams.get("limit")) || 10;
-  const name = searchParams.get("common.name");
+  const name = searchParams.get("name");
   const email = searchParams.get("email");
   const role = searchParams.get("role");
   const { t } = useLanguage();
@@ -42,7 +37,16 @@ const filterColumns = [
   const [error, setError] = useState(null);
   const [meta, setMeta] = useState({ currentPage: page, lastPage: 1 });
   const columns = getColumns(t, setRefresh);
-
+  const filterColumns = [
+    { id: "name",label:t("common.name") },
+    { id: "email",label:t("common.email") },
+    { id: "role",label:t("common.role"),    type: "select",
+      options: [
+        { label: t("roles.SUPER_ADMIN"), value: "SUPER_ADMIN" },
+        { label: t("roles.REGIONAL_ADMIN"), value: "REGIONAL_ADMIN" },
+      ], },
+  ];
+  
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true);

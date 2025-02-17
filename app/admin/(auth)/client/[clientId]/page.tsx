@@ -25,7 +25,7 @@ const EditClientPage: React.FC = () => {
       .min(2, t("common.validation.min", { min: 2 }))
       .required(t("common.validation.required")),
     phoneNo: Yup.string()
-      .min(9, t("validation_phone_valid"))
+      .min(9, t("common.validation.phone"))
       .required(t("common.validation.required")),
   });
 

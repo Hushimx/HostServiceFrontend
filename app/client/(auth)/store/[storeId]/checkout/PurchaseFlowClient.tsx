@@ -84,7 +84,7 @@ const CheckoutPage = ({ storeId }: { storeId: UUID }) => {
     return (
       <div className="fixed inset-0 bg-white opacity-90 flex justify-center items-center z-50">
         <div className="animate-spin w-16 h-16 border-4 rounded-full border-purple-500 border-t-transparent"></div>
-        <p className="ml-4 text-lg text-gray-800">{t("checkout.loading")}</p>
+        <p className="ml-4 text-lg text-gray-800">{t("common.loading")}</p>
       </div>
     );
   }

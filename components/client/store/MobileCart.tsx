@@ -59,7 +59,7 @@ export default function MobileCart({
 
           <DrawerClose asChild>
             <Button variant="outline" className="mt-2 w-full">
-              {t("common.close")}
+              {t("checkout.close")}
             </Button>
           </DrawerClose>
         </DrawerFooter>

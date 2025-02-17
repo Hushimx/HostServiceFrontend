@@ -18,11 +18,14 @@ const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 import "react-quill/dist/quill.snow.css";
 import dynamic from "next/dynamic";
 import { getImageUrl } from "@/lib/utils";
+import { hasPermission, Permission } from "@/lib/rbac";
+import { useDashboardAuth } from "@/contexts/AdminAuthContext";
 
 const EditEventPage: React.FC = () => {
   const { id } = useParams();
-  const router = useRouter();
   const { t } = useLanguage();
+  const router = useRouter();
+  const { role, user } = useDashboardAuth();
 
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -32,11 +35,11 @@ const EditEventPage: React.FC = () => {
 
   const validationSchema = Yup.object().shape({
     title: Yup.string()
-      .min(3, t("validation_min"))
+      .min(3, t("common.validation.min", { min: 3 }))
       .required(t("common.validation.required")),
 
     title_ar: Yup.string()
-      .min(3, t("validation_min"))
+      .min(3, t("common.validation.min", { min: 3 }))
       .optional(),
     address: Yup.string().required(t("common.validation.required")),
     locationUrl: Yup.string().url(t("validation_invalid_url")).optional(),
@@ -136,7 +139,7 @@ const EditEventPage: React.FC = () => {
         
         {/* Image */}
         <div>
-          <label>{t("event_image")}</label>
+          <label>{t("common.image")}</label>
           <ImageUpload
             value={
               isImageTouched && formik.values.image instanceof File
@@ -192,9 +195,9 @@ const EditEventPage: React.FC = () => {
 
         {/* Location URL */}
         <div>
-          <label>{t("common.placeholders.locationUrl")}</label>
+          <label>{t("common.locationUrl")}</label>
           <Input
-            name="common.locationUrl"
+            name="locationUrl"
             value={formik.values.locationUrl}
             onChange={formik.handleChange}
             placeholder={t("common.placeholders.locationUrl")}
@@ -207,23 +210,25 @@ const EditEventPage: React.FC = () => {
 
 
 
-        {/* Country */}
-        <div>
-          <label>{t("common.country")}</label>
-          <CountrySelect
-            selectedCountry={selectedCountry}
-            onCountryChange={(countryId) => {
-              setSelectedCountry(countryId);
-              formik.setFieldValue("cityId", "");
-            }}
-          />
-        </div>
+       {/* Country */}
+       {hasPermission(role, Permission.ACCESS_ALL_HOTELS) && (
+          <div>
+            <label className="block text-sm font-medium">{t("common.country")}</label>
+            <CountrySelect
+              selectedCountry={selectedCountry}
+              onCountryChange={(countryId) => {
+                setSelectedCountry(countryId);
+                formik.setFieldValue("cityId", null);
+              }}
+            />
+          </div>
+        )}
 
         {/* City */}
         <div>
-          <label>{t("common.city")}</label>
+          <label className="block text-sm font-medium">{t("common.city")}</label>
           <CitySelect
-            countryId={selectedCountry}
+            countryId={selectedCountry || +user.countryId}
             initialValue={+formik.values.cityId}
             onCityChange={(cityId) => formik.setFieldValue("cityId", cityId)}
           />
@@ -231,8 +236,9 @@ const EditEventPage: React.FC = () => {
             <p className="text-sm text-red-500">{formik.errors.cityId}</p>
           )}
         </div>
-                {/* Description */}
-                <div>
+
+        {/* Description */}
+        <div>
           <label>{t("common.description")}</label>
           <ReactQuill
             className="ReactQuill"

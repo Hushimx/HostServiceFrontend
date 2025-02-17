@@ -150,6 +150,15 @@ export const AdminNavItems: NavItem[] = [
     permission: Permission.VIEW_ADMINS, // Optional for role-based visibility
   },
   {
+    title: 'Clients',
+    url: '/admin/client',
+    icon: 'user',
+    isActive: false,
+    shortcut: ['c', 'l'],
+    items: [],
+  },
+
+  {
     title: 'Hotels',
     url: '/admin/hotel',
     icon: 'hotel',

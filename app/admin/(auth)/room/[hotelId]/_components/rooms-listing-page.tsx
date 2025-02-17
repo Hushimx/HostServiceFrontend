@@ -18,11 +18,9 @@ import { Pagination } from "@/components/pagination";
 import { getColumns } from "./rooms-tables/columns"; // Columns for room table
 import { DataTable } from "@/components/ui/table/data-table";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { l } from "nuqs/dist/serializer-D6QaciYt";
 
-const filterColumns = [
-  { id: "roomNumber" },
-  { id: "type" },
-];
+
 
 export default function RoomListingPage({ hotelId }) {
   const searchParams = useSearchParams();
@@ -40,6 +38,11 @@ export default function RoomListingPage({ hotelId }) {
   const [refresh,setRefresh] = useState(0);
   const { t } = useLanguage();
   const columns = getColumns(t,setRefresh);
+
+  const filterColumns = [
+    { id: "roomNumber", label: t("common.room_number") },
+    { id: "type", label: t("room.header.type") },
+  ];
 
   useEffect(() => {
     const fetchData = async () => {

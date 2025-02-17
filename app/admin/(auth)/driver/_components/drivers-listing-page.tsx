@@ -21,15 +21,12 @@ import { CitySelect } from "@/components/ui/citySelector";
 import { hasPermission, Permission } from "@/lib/rbac";
 import { useDashboardAuth } from "@/contexts/AdminAuthContext";
 
-const filterColumns = [
-  { id: "name" },
-];
 
 export default function DriverListingPage() {
   const searchParams = useSearchParams();
   const page = Number(searchParams.get("page")) || 1;
   const limit = Number(searchParams.get("limit")) || 10;
-  const name = searchParams.get("common.name");
+  const name = searchParams.get("name");
   const city = searchParams.get("city");
   const country = searchParams.get("country");
   const { t } = useLanguage();
@@ -43,6 +40,11 @@ export default function DriverListingPage() {
   const [error, setError] = useState(null);
   const [meta, setMeta] = useState({ currentPage: page, lastPage: 1 });
   const columns = getColumns(t,setRefresh);
+
+  
+const filterColumns = [
+  { id: "name", label: t("common.name") },
+];
 
   useEffect(() => {
     const fetchData = async () => {

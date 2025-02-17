@@ -22,7 +22,7 @@ const AddProductPage: React.FC = () => {
       .min(2, t("common.validation.min", { min: 2 }))
       .required(t("common.validation.required")),
     price: Yup.number()
-      .min(0, t("validation_min_value"))
+      .min(0)
       .required(t("common.validation.required")),
   });
 

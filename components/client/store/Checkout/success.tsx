@@ -63,7 +63,7 @@ export default function SuccessComponent({ isOpen, onClose,button }: SuccessComp
             {t("checkout.sucess")}
           </DrawerTitle>
           <DrawerDescription className="text-gray-600">
-            {t("checkout.orders_success_message")}
+            {/* {t("checkout.orders_success_message")} */}
           </DrawerDescription>
         </DrawerHeader>
         <Content />
@@ -79,7 +79,7 @@ export default function SuccessComponent({ isOpen, onClose,button }: SuccessComp
         <h2 className="text-green-600 text-2xl font-bold text-center">
           {t("checkout.sucess")}
         </h2>
-        <p className="text-gray-600 text-center mt-2">{t("orders_success_message")}</p>
+        {/* <p className="text-gray-600 text-center mt-2">{t("orders_success_message")}</p> */}
         <Content />
         <Footer />
       </div>
