@@ -163,8 +163,8 @@ if (error) return <Error message={error} />;
 
         {/* Role */}
         <div>
-          <label className="block text-sm font-medium">{t("role")}</label>
-          <Select
+        <label className="block text-sm font-medium">{t('common.role')}</label>
+        <Select
             value={formik.values.role}
             onValueChange={(value) => formik.setFieldValue("role", value)}
           >

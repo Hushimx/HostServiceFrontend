@@ -43,7 +43,6 @@ export default function SuccessComponent({ isOpen, onClose,button }: SuccessComp
       </div>
       {/* Message */}
       <p className="text-lg text-gray-800 text-center leading-relaxed">
-        {t("order_confirmed_message")}
       </p>
     </div>
   );

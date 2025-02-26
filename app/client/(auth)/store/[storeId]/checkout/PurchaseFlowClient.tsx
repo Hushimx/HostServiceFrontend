@@ -129,7 +129,7 @@ const CheckoutPage = ({ storeId }: { storeId: UUID }) => {
           </div>
           <h2 className="text-2xl font-bold text-gray-800">{t("checkout.emptyCart")}</h2>
           <p className="text-gray-600">{t("checkout.addItemsToContinue")}</p>
-          <Link href="/store">
+          <Link href="/client">
             <Button
               className="mt-4 bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-purple-700"
               onClick={() => router.back()}

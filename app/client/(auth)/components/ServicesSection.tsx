@@ -3,7 +3,7 @@ export default function CombinedServicesAndDelivery() {
     {
       title: "تنظيف الغرفة",
       icon: "/assets/icons/room-service.png", // Laundry icon
-      link: "client/service/room-service",
+      link: "client/service/cleaning",
     },
     {
       title: "مغسلة الملابس" ,
@@ -26,7 +26,7 @@ export default function CombinedServicesAndDelivery() {
       image:
         "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=800&auto=format&fit=crop",
       alt: "طلبات المطعم",
-      link: "/client/delivery/restaurants",
+      link: "/client/delivery/resturants",
     },
     {
       title: "بقالة",

@@ -129,11 +129,11 @@ export const CellAction: React.FC<{ data: any;  setRefresh: (prev) => void }> = 
             onChange={(e) => setStatus(e.target.value)}
             className="w-full p-2 border rounded-md dark:bg-gray-700 dark:text-white"
           >
-            <option value="PENDING">{t("common.PENDING")}</option>
-            <option value="PICKUP">{t("common.PICKUP")}</option>
-            <option value="ON_WAY">{t("common.ON_WAY")}</option>
-            <option value="COMPLETED">{t("common.COMPLETED")}</option>
-            <option value="CANCELED">{t("common.CANCELED")}</option>
+            <option value="PENDING">{t("status.PENDING")}</option>
+            <option value="PICKUP">{t("status.PICKUP")}</option>
+            <option value="ON_WAY">{t("status.ON_WAY")}</option>
+            <option value="COMPLETED">{t("status.COMPLETED")}</option>
+            <option value="CANCELED">{t("status.CANCELED")}</option>
           </select>
           <div className="flex justify-end space-x-2 mt-4">
             <Button

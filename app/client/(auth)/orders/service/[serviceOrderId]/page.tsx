@@ -8,19 +8,19 @@ import { create } from 'zustand';
 import { useLanguage } from "@/contexts/LanguageContext";
 
 const ServiceOrderDetailsPage = ({ orderId }: { orderId: string }) => {
-  const statusSteps = [
-    { id: 1, name: "جديد", key: "PENDING" },
-    { id: 2, name: "قيد التنفيذ", key: "IN_PROGRESS" },
-    { id: 3, name: "مكتمل", key: "COMPLETED" },
-  ];
-
-  // State
+  const { t } = useLanguage()
   const [order, setOrder] = useState<any>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   const { user } = useClientAuth();
   const { serviceOrderId } = useParams(); // Get the service order ID from the URL
-  const { t } = useLanguage()
+  const statusSteps = [
+    { id: 1, name: t("status.PENDING"), key: "PENDING" },
+    { id: 2, name: t("status.PICKUP"), key: "PICKUP" },
+    { id: 3, name: t("status.IN_PROGRESS"), key: "IN_PROGRESS" },
+    { id: 4, name: t("status.COMPLETED"), key: "COMPLETED" },
+  ];
+
   // Fetch order data from the backend
   useEffect(() => {
     const fetchOrder = async () => {
@@ -142,8 +142,8 @@ const ServiceOrderDetailsPage = ({ orderId }: { orderId: string }) => {
 
       {/* Order Total */}
       <div className="flex justify-between items-center bg-white p-4 rounded-lg shadow-md text-black font-semibold">
-        <span className="text-lg">s</span>
-        <span className="text-lg">{order.currencySign} {order.total}</span>
+      <span className="text-lg">{t("orders.info.total")}</span>
+      <span className="text-lg">{order.currencySign} {order.total}</span>
       </div>
     </div>
   );

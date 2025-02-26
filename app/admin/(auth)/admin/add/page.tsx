@@ -87,8 +87,8 @@ const AddAdminPage: React.FC = () => {
 
             {/* Email */}
             <div>
-              <label className="block text-sm font-medium">{t('email')}</label>
-              <Field
+            <label className="block text-sm font-medium">{t("common.email")}</label>
+            <Field
                 name="email"
                 as={Input}
                 placeholder={t('common.placeholders.email')}
@@ -100,7 +100,7 @@ const AddAdminPage: React.FC = () => {
 
             {/* Password */}
             <div>
-              <label className="block text-sm font-medium">{t('password')}</label>
+          <label className="block text-sm font-medium">{t("common.password")}</label>
               <Field
                 name="password"
                 type="password"

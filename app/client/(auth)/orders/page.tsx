@@ -203,7 +203,7 @@ const OrdersPage = () => {
                     selectedTab
                   )}`}
                 >
-                  {t(order.status) || order.status}
+                  {t(`status.${order.status}`) || order.status}
                 </span>
               </div>
             </div>

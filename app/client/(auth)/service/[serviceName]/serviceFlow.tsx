@@ -157,13 +157,15 @@ export default function ServicePage({ slug }: { slug: string }) {
       </div>
 
       {/* Success Drawer */}
-      <SuccessDrawer isOpen={isOrderSuccess} onClose={() => setIsOrderSuccess(false)}         button={
+      <SuccessDrawer isOpen={isOrderSuccess} onClose={() => setIsOrderSuccess(false)} 
+        button={
           <Link href={`/client/orders/service/${orderId}`}>
             <Button className="w-full bg-purple-600 hover:bg-purple-700 text-white text-lg py-3 rounded-lg">
               {t("checkout.viewOrder")}
             </Button>
           </Link>
-        }  />
+        }
+        />
     </div>
   );
 }
