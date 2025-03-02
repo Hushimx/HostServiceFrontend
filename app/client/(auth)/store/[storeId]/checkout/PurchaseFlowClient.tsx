@@ -108,11 +108,12 @@ const CheckoutPage = ({ storeId }: { storeId: UUID }) => {
           />
 
           <div className="p-4 bg-gray-50 rounded-lg shadow-lg">
+          <div className="flex justify-between">
             <h2 className="text-lg font-bold text-gray-800 mb-2">{t("checkout.total")}</h2>
             <p className="text-xl font-bold text-purple-600">
-              {currency}
-              {total.toFixed(2)}
+              {currency}{" "}{total.toFixed(2)}
             </p>
+          </div>
             <Button
               className="mt-4 w-full bg-purple-600 text-white py-3 rounded-lg hover:bg-purple-700 transition-all"
               onClick={handleConfirmOrder}

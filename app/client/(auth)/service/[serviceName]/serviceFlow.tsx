@@ -67,7 +67,6 @@ export default function ServicePage({ slug }: { slug: string }) {
 
   // Handle order confirmation
   const handleConfirmOrder = async () => {
-    setIsLoading(true);
     setErrorMessage(null);
 
     try {

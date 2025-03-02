@@ -37,30 +37,30 @@ export default function CartContent({
             {cart.map((item) => (
               <li
                 key={item.id}
-                className="flex items-center justify-between bg-gray-50 p-4 rounded-lg shadow-sm"
+                className="flex items-center justify-between bg-gray-50 rounded-lg shadow-sm"
               >
                 {/* Product Image */}
                 <img
                   src={getImageUrl(item.image)}
                   alt={item.name}
-                  className="w-16 h-16 object-cover rounded-lg"
+                  className="w-16 h-16 object-cover rounded-lg "
                 />
 
                 {/* Product Details */}
-                <div className="flex-1 ml-4">
+                <div className="flex-1 mx-4">
                   <h3 className="text-lg font-medium text-gray-900">{item.name}</h3>
                   <p className="text-sm text-gray-500">{t("price")}: { currency } {item.price.toFixed(2)}</p>
                 </div>
 
                 {/* Quantity Controls */}
-                <div className="flex items-center space-x-2">
+                <div className="flex items-center">
                   <button
                     onClick={() => onUpdateQuantity(item.id, -1)}
                     className="text-gray-600 bg-gray-200 px-3 py-1 rounded-full hover:bg-gray-300"
                   >
                     -
                   </button>
-                  <span className="text-gray-900 font-medium m-0">{item.quantity}</span>
+                  <span className="text-gray-900 font-medium mx-2">{item.quantity}</span>
                   <button
                     onClick={() => onUpdateQuantity(item.id, 1)}
                     className="text-gray-600 bg-gray-200 px-3 py-1 rounded-full hover:bg-gray-300"
@@ -72,9 +72,9 @@ export default function CartContent({
                 {/* Remove Button */}
                 <button
                   onClick={() => onRemoveFromCart(item.id)}
-                  className="text-red-600 hover:text-red-700 bg-gray-100 px-3 py-1 rounded-lg ml-4"
+                  className="text-red-600 hover:text-red-700 bg-gray-100 px-3 py-1 rounded-lg "
                 >
-                  {t("checkout.remove")}
+                  X
                 </button>
               </li>
             ))}

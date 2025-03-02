@@ -3,13 +3,14 @@ import { useRouter, usePathname } from 'next/navigation';
 import { Home, Package } from 'lucide-react'; // Importing icons from lucide-react
 import { useIsMobile } from '@/hooks/use-mobile';
 import { useState, useEffect } from 'react';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 export default function FooterNav() {
   const router = useRouter();
   const pathname = usePathname(); // Get the current route path
   const isMobile = useIsMobile();
   const [active, setActive] = useState<string>('');
-
+  const {t} = useLanguage();
   // Update active state when pathname changes
   useEffect(() => {
     if (pathname === '/client') {
@@ -42,7 +43,7 @@ export default function FooterNav() {
             }`}
           >
             <Home className="w-7 h-7 mb-1" /> {/* Larger Icon */}
-            <span className="text-sm font-medium">Home</span> {/* Larger Text */}
+            <span className="text-sm font-medium">{t("common.home")}</span> {/* Larger Text */}
           </button>
 
           {/* Orders Button */}
@@ -56,7 +57,7 @@ export default function FooterNav() {
             }`}
           >
             <Package className="w-7 h-7 mb-1" /> {/* Larger Icon */}
-            <span className="text-sm font-medium">Orders</span> {/* Larger Text */}
+            <span className="text-sm font-medium">{t("nav.Orders")}</span> {/* Larger Text */}
           </button>
         </nav>
       )}

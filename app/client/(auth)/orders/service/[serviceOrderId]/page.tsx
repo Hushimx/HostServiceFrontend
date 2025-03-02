@@ -133,7 +133,7 @@ const ServiceOrderDetailsPage = ({ orderId }: { orderId: string }) => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-gray-700">
           <p><strong>{t("orders.card.order_number")}</strong> {order.id}</p>
           <p><strong>{t("orders.card.service")}</strong> {order.service.name}</p>
-          <p><strong>{t("orders.card.date")}</strong> {new Date(order.createdAt).toLocaleDateString()}</p>
+          <p><strong>{t("orders.card.date")}</strong> {new Date(order.createdAt).toLocaleString()}</p>
           <p><strong>{t("orders.card.client")}</strong> {order.clientName}</p>
           <p><strong>{t("orders.card.phone")}</strong> {order.clientNumber}</p>
           <p><strong>{t("orders.card.note")}</strong> {order.notes || t("orders.info.noNotes")}</p>

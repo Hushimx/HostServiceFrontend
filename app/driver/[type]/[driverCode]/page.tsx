@@ -2,7 +2,6 @@
 
 import { useParams } from "next/navigation";
 import { useState, useEffect } from "react";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
@@ -14,6 +13,7 @@ const DriverPage = () => {
   const [error, setError] = useState<string>("");
   const [status, setStatus] = useState<string>("");
   const [notes, setNotes] = useState<string>("");
+  const [currency, setCurrency] = useState<string>("");
 
   useEffect(() => {
     if (type && driverCode) {
@@ -34,6 +34,7 @@ const DriverPage = () => {
       setOrder(data);
       setStatus(data.status || "");
       setNotes(data.notes || "");
+      setCurrency(data.currencySign || "");
     } catch (err: any) {
       setError(err.message || "An unexpected error occurred.");
     } finally {
@@ -99,7 +100,7 @@ const DriverPage = () => {
             {order.orderItems?.length > 0 ? (
               order.orderItems.map((item: any) => (
                 <li key={item.id}>
-                  {item.quantity}x {item.productTitle} (${item.price.toFixed(2)})
+                  {item.quantity}x {item.productTitle} ({currency} {item.price.toFixed(2)})
                 </li>
               ))
             ) : (
@@ -135,18 +136,19 @@ const DriverPage = () => {
         <label className="block text-gray-700 font-medium mb-2 mt-4">
           Update Status
         </label>
-        <Select value={status} onValueChange={setStatus}>
-          <SelectTrigger className="w-full">
-            <SelectValue placeholder="Select Status" />
-          </SelectTrigger>
-          <SelectContent>
-            {allowedStatuses.map((statusOption) => (
-              <SelectItem key={statusOption} value={statusOption}>
-                {statusOption}
-              </SelectItem>
-            ))}
-          </SelectContent>
-        </Select>
+        <select
+          value={status}
+          onChange={(e) => setStatus(e.target.value)}
+          className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+        >
+          <option value="" disabled>Select Status</option>
+          {allowedStatuses.map((statusOption) => (
+            <option key={statusOption} value={statusOption}>
+              {statusOption}
+            </option>
+          ))}
+        </select>
+
 
         <label className="block text-gray-700 font-medium mt-4 mb-2">
           Notes

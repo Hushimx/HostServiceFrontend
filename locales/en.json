@@ -62,6 +62,7 @@
         "price": "Price",
         "cities": "Cities",
         "none": "None",
+        "home": "Home",
         "validation": {
             "required": "This field is required",
             "min": "Text must be longer than {min} characters",

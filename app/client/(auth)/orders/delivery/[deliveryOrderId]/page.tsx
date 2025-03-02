@@ -57,8 +57,10 @@ const OrderDetailsPage = ({ orderId }: { orderId: string }) => {
   const getStepStyle = (stepKey: string) => {
     const currentIndex = statusSteps.findIndex((s) => s.key === order?.status);
     const stepIndex = statusSteps.findIndex((s) => s.key === stepKey);
+    const lastStatus = statusSteps[statusSteps.length - 1];
+    
 
-    if (stepIndex < currentIndex) return "bg-green-500 text-white border-green-500";
+    if (stepIndex < currentIndex || currentIndex == statusSteps.length - 1 && lastStatus.name == t("status.COMPLETED") ) return "bg-green-500 text-white border-green-500";
     if (stepIndex === currentIndex) return "bg-yellow-400 text-white border-yellow-400";
     return "bg-gray-300 text-gray-500 border-gray-300";
   };
@@ -96,7 +98,7 @@ const OrderDetailsPage = ({ orderId }: { orderId: string }) => {
                     step.key
                   )}`}
                 >
-                  {index < statusSteps.findIndex((s) => s.key === order.status) ? (
+                  {index < statusSteps.findIndex((s) => s.key === order.status) || order.status ==   t("status.COMPLETED") ? (
                     <CheckIcon className="h-6 w-6" />
                   ) : (
                     index + 1
@@ -116,10 +118,7 @@ const OrderDetailsPage = ({ orderId }: { orderId: string }) => {
             <strong>{t("orders.info.id")}:</strong> {order.id}
           </p>
           <p>
-            <strong>{t("orders.info.date")}:</strong> {new Date(order.date).toLocaleDateString()}
-          </p>
-          <p>
-            <strong>{t("orders.info.clientName")}:</strong> {order.client.name}
+            <strong>{t("orders.info.date")}:</strong> {new Date(order.date).toLocaleString()}
           </p>
           <p>
             <strong>{t("orders.info.clientNumber")}:</strong> {order.client.phoneNumber}
@@ -140,30 +139,41 @@ const OrderDetailsPage = ({ orderId }: { orderId: string }) => {
       </div>
       {/* Order Items */}
       <div className="bg-white p-6 rounded-lg shadow-md mb-8">
-        <h2 className="text-xl font-semibold mb-4 text-gray-800">{t("orders.info.products")}</h2>
+        <h2 className="text-xl font-semibold mb-4 text-gray-800">
+          {t("orders.info.products")}
+        </h2>
         <div className="divide-y divide-gray-200">
           {order.items.map((item: any) => (
             <div key={item.id} className="flex justify-between items-center py-3">
-              <p className="text-gray-700 sm:bg-red-500  ">
+              {/* Item Name & Quantity */}
+              <p className="text-gray-700">
                 {item.name}{" "}
-                <span className="text-gray-500">
-                  ({item.quantity} × {item.price}
-                  {order.currencySign})
-                </span>
+                <p className="text-gray-500">
+                  ({item.quantity} × {order.currencySign}
+                  {""}
+                  {item.price.toFixed(2)})
+                </p>
               </p>
-              <p className="font-semibold text-gray-800">
-                {(item.quantity * item.price).toFixed(2)}
+              
+              {/* Item Total Price */}
+              <p className="text-xl font-bold text-purple-600">
                 {order.currencySign}
+                {" "}
+                {(item.price * item.quantity).toFixed(2)}
               </p>
             </div>
           ))}
         </div>
       </div>
+
       {/* Order Total */}
       <div className="flex justify-between items-center bg-white p-4 rounded-lg shadow-md text-black font-semibold">
         <span className="text-lg">{t("orders.info.total")}</span>
-        <span className="text-lg">{order.currencySign} {order.total}</span>
+        <span className="text-xl font-bold text-purple-600">
+          {order.currencySign} {order.total}
+        </span>
       </div>
+
     </div>
   );
 };

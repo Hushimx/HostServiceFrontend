@@ -56,7 +56,7 @@
     --secondary: 260 15% 30%;
     --secondary-foreground: 50 70% 85%;
     --accent: 50 90% 50%;
-    --accent-foreground: 260 50% 10%;
+    --accent-foreground: 0 100% 100%;
     --destructive: 0 80% 30%;
     --destructive-foreground: 0 80% 95%;
     --ring: 50 70% 40%;
