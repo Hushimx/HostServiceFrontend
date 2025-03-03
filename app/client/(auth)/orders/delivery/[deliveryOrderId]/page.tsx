@@ -9,7 +9,7 @@ import Loading from "@/components/ui/loading";
 import Error from "@/components/ui/error";
 import NotFound from "@/app/not-found";
 
-const OrderDetailsPage = ({ orderId }: { orderId: string }) => {
+const OrderDetailsPage = () => {
   const { t } = useLanguage();
   const statusSteps = [
     { id: 1, name: t("status.PENDING"), key: "PENDING" },

@@ -3,9 +3,7 @@ import PurchaseFlowClient from "./PurchaseFlowClient"; // Client component handl
 import { e } from "nuqs/dist/serializer-D6QaciYt";
 import { title } from "process";
 
-export const Metadata = {
-    title:"dsdsd"
-}
+
 // Server Component to Fetch Store and Hotel Info
 export default async function PurchaseFlow({
   params,

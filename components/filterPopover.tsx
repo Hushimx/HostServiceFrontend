@@ -18,7 +18,7 @@ import { useLanguage } from "@/contexts/LanguageContext";
 interface FilterColumn {
   id: string;
   type: "input" | "select"; // Add type to differentiate
-  options?: { label: string; value: string }[];
+  options?: { label?: string; value: string }[];
   label?: string;
 }
 

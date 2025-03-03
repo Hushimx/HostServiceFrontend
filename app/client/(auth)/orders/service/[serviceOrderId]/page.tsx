@@ -7,7 +7,7 @@ import { useParams } from "next/navigation";
 import { create } from 'zustand';
 import { useLanguage } from "@/contexts/LanguageContext";
 
-const ServiceOrderDetailsPage = ({ orderId }: { orderId: string }) => {
+const ServiceOrderDetailsPage = () => {
   const { t } = useLanguage()
   const [order, setOrder] = useState<any>(null);
   const [loading, setLoading] = useState(true);

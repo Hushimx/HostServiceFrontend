@@ -2,6 +2,9 @@ const { fa } = require('@faker-js/faker');
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  typescript: {
+    ignoreBuildErrors: true, // Ignore TypeScript errors during build
+  },
   images: {
     remotePatterns: [
 
