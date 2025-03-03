@@ -27,7 +27,7 @@ export const getColumns = (t, setRefresh) => [
   },
   {
     accessorKey: "roomNumber",
-    header: t("common.room_number"), // Translated "Room Number"
+    header: t("orders.info.roomNumber"), // Translated "Room Number"
     enableSorting: true,
   },
   {
