@@ -10,7 +10,7 @@ import { toast } from 'sonner';
 import { fetchFromNest } from '@/hooks/useFetch';
 import { useLanguage } from '@/contexts/LanguageContext';
 
-const AddRoomPage: React.FC<{ hotelId: number }> = () => {
+const AddRoomPage : React.FC = () => {
   const router = useRouter();
   const { hotelId } = useParams();
   const { t } = useLanguage();
